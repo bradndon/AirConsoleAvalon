@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.navbar {
+  height: 10%;
+  width: 100%;
+  background-color: #303030;
+}
+
+.navbar button {
+  color: white;
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+.navMenu {
+  width: 80%;
+  z-index: 45;
+  left: -80%;
+  background-color: #303030;
+  height: 100%;
+  position: absolute;
+  transition: all .3s
+}
+
+.navMenu--shown {
+  left: 0%;
+}
+
+.innerContainer {
+  height: 90%;
+  background-color: #FAFAFA;
+}

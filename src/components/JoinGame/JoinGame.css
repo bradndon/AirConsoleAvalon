@@ -1,0 +1,37 @@
+.joinGame {
+  background-color: rgba(0,0,50,0.6);
+  padding: 50px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.joinGame input[type="text"] {
+  font-size: 24px;
+  padding: 10px;
+  margin-bottom: 30px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  width: 70%;
+  text-align: center;
+  border-bottom: 3px solid white;
+  transition: all .3s;
+}
+
+.joinGame input[type="text"]:focus {
+  border-bottom: 3px solid #606060;
+  outline: none;
+}
+
+.joinGame input[type="submit"] {
+  background-color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  padding: 10px 15px;
+}
