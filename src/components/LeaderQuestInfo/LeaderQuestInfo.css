@@ -1,0 +1,24 @@
+.LeaderQuestInfo {
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(48,48,48,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.LeaderQuestInfo p {
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.LeaderQuestInfo button {
+  background-color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  padding: 10px 15px;
+}

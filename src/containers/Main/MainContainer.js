@@ -19,8 +19,10 @@ class MainContainer extends React.Component {
           <button onClick={this.toggleMenu}>Menu</button>
           <div className={this.state.menuShown ? "navMenu navMenu--shown" : "navMenu"}>
             <ul>
-              <li><Link to="/">Waiting Screen</Link></li>
-              <li><Link to="/players">Players</Link></li>
+              <li><Link onClick={this.toggleMenu} to="/">Waiting Screen</Link></li>
+              <li><Link onClick={this.toggleMenu} to="/players">Players</Link></li>
+              <li><Link onClick={this.toggleMenu} to="/vote">Vote</Link></li>
+
             </ul>
           </div>
         </div>

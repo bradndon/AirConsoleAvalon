@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import PlayerCard from '../../components/PlayerCard/PlayerCard'
+import LeaderQuestInfo from '../../components/LeaderQuestInfo/LeaderQuestInfo'
+
 
 class PlayerChooserContainer extends React.Component {
   constructor() {
@@ -8,34 +10,13 @@ class PlayerChooserContainer extends React.Component {
       selectedCount: 0,
       maxSelected: 4,
       players: [
-        {
-          name:"Brandon",
-          chosen: false
-        },
-        {
-          name:"Isaac",
-          chosen: false
-        },
-        {
-          name:"Kirsten",
-          chosen: false
-        },
-        {
-          name:"Mitch",
-          chosen: false
-        },
-        {
-          name:"Kenzie",
-          chosen: false
-        },
-        {
-          name:"Geneva",
-          chosen: false
-        },
-        {
-          name:"Dana",
-          chosen: false
-        },]
+        {name:"Brandon",chosen: false},
+        {name:"Isaac",chosen: false},
+        {name:"Kirsten",chosen: false},
+        {name:"Mitch",chosen: false},
+        {name:"Kenzie",chosen: false},
+        {name:"Geneva",chosen: false},
+        {name:"Dana",chosen: false}]
     }
   }
   handleTap(index, e) {
@@ -48,26 +29,38 @@ class PlayerChooserContainer extends React.Component {
         selectedCount++;
       } else {
         players[index].chosen = !players[index].chosen
-
       }
     } else {
       selectedCount--;
     }
     this.setState({players, selectedCount})
-    console.log(index, e)
+  }
+  questReady () {
+    console.log("Ready for quest")
+    this.context.router.push('/vote')
   }
   render () {
+    let numLeft = this.state.maxSelected - this.state.selectedCount
     return (
       <div>
-        <h1>{this.state.selectedCount}</h1>
+        <LeaderQuestInfo
+          numLeft={numLeft}
+          isReady={numLeft !== 0}
+          sendReady={()=>this.questReady()}/>
+
         {this.state.players.map((player, i)=><PlayerCard
                                     key={i}
                                     name={player.name}
                                     chosen={player.chosen}
                                     handleTap={(e) =>this.handleTap(i, e)}/>)}
+        <div style={{clear: "both", paddingTop: "90px"}}></div>
       </div>
     )
   }
+}
+
+PlayerChooserContainer.contextTypes = {
+  router: PropTypes.object.isRequired
 }
 
 export default PlayerChooserContainer;
