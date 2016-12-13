@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
-import PlayerCard from '../../components/PlayerCard/PlayerCard'
-import LeaderQuestInfo from '../../components/LeaderQuestInfo/LeaderQuestInfo'
+import {PlayerCard, LeaderQuestInfo} from 'components'
 
 
 class PlayerChooserContainer extends React.Component {

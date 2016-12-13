@@ -1,6 +1,5 @@
 import React from 'react'
-import Waiting from "../../components/Waiting/Waiting"
-import JoinGame from "../../components/JoinGame/JoinGame"
+import {JoinGame, Waiting} from "components"
 
 import "./MenuContainer.css"
 
