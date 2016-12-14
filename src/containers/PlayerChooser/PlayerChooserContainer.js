@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react'
 import {PlayerCard, LeaderQuestInfo} from 'components'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as playerActionCreators from 'redux/modules/players'
 
 
 class PlayerChooserContainer extends React.Component {
@@ -8,34 +11,29 @@ class PlayerChooserContainer extends React.Component {
     this.state = {
       selectedCount: 0,
       maxSelected: 4,
-      players: [
-        {name:"Brandon",chosen: false},
-        {name:"Isaac",chosen: false},
-        {name:"Kirsten",chosen: false},
-        {name:"Mitch",chosen: false},
-        {name:"Kenzie",chosen: false},
-        {name:"Geneva",chosen: false},
-        {name:"Dana",chosen: false}]
     }
+  }
+  componentDidMount() {
+    console.warn(this.props)
   }
   handleTap(index, e) {
     e.stopPropagation()
-    let players = this.state.players
-    let selectedCount = this.state.selectedCount
-    players[index].chosen = !players[index].chosen
-    if (players[index].chosen) {
-      if (selectedCount < this.state.maxSelected) {
-        selectedCount++;
-      } else {
-        players[index].chosen = !players[index].chosen
-      }
-    } else {
-      selectedCount--;
-    }
-    this.setState({players, selectedCount})
+    this.props.choosePlayer(this.props.players[index].deviceId)
+
+    // let selectedCount = this.state.selectedCount
+    // if (players[index].chosen) {
+    //   if (selectedCount < this.state.maxSelected) {
+    //     selectedCount++;
+    //   } else {
+    //     players[index].chosen = !players[index].chosen
+    //   }
+    // } else {
+    //   selectedCount--;
+    // }
+    // this.setState({players, selectedCount})
   }
   questReady () {
-    console.log("Ready for quest")
+    console.warn('Ready for quest')
     this.context.router.push('/vote')
   }
   render () {
@@ -47,19 +45,29 @@ class PlayerChooserContainer extends React.Component {
           isReady={numLeft !== 0}
           sendReady={()=>this.questReady()}/>
 
-        {this.state.players.map((player, i)=><PlayerCard
-                                    key={i}
-                                    name={player.name}
-                                    chosen={player.chosen}
-                                    handleTap={(e) =>this.handleTap(i, e)}/>)}
-        <div style={{clear: "both", paddingTop: "90px"}}></div>
+        {this.props.players.map((player, i)=><PlayerCard
+          key={i}
+          name={player.name}
+          chosen={player.chosen}
+          handleTap={(e) =>this.handleTap(i, e)}/>)}
+        <div style={{clear: 'both', paddingTop: '90px'}}/>
       </div>
     )
   }
 }
 
 PlayerChooserContainer.contextTypes = {
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired,
 }
 
-export default PlayerChooserContainer;
+function mapStateToProps({players}) {
+  return {
+    players: Object.keys(players).map((e)=>typeof players[e] === 'object'? players[e]:null).filter((e)=>e),
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators(playerActionCreators, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerChooserContainer)

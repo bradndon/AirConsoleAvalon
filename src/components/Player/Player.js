@@ -7,7 +7,7 @@ const Player = ({name}) => {
 }
 
 Player.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 }
 
 export default Player

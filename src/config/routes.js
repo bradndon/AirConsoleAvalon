@@ -6,10 +6,10 @@ import { MainContainer, MenuContainer, VoteContainer, PlayerChooserContainer }
 
 const routes = (
   <Router history={hashHistory}>
-    <Router path="/" component={MainContainer}>
+    <Router path='/' component={MainContainer}>
       <IndexRoute component={MenuContainer}/>
-      <Route path="/players" component={PlayerChooserContainer}/>
-      <Route path="/vote" component={VoteContainer}/>
+      <Route path='/players' component={PlayerChooserContainer}/>
+      <Route path='/vote' component={VoteContainer}/>
     </Router>
   </Router>
 )

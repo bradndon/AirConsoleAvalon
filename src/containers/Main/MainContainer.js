@@ -1,32 +1,32 @@
 import React from 'react'
-import "./Main.css"
+import './Main.css'
 import {Link} from 'react-router'
 
 class MainContainer extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {menuShown: false}
 
     this.toggleMenu = this.toggleMenu.bind(this)
   }
-  toggleMenu() {
+  toggleMenu () {
     this.setState({menuShown: !this.state.menuShown})
   }
   render () {
     return (
-      <div className={"container"}>
-        <div className={"navbar"}>
-          <button onClick={this.toggleMenu}>Menu</button>
-          <div className={this.state.menuShown ? "navMenu navMenu--shown" : "navMenu"}>
+      <div className={'container'}>
+        <div className={'navbar'}>
+          <button onClick={this.toggleMenu}>{'Menu'}</button>
+          <div className={this.state.menuShown ? 'navMenu navMenu--shown' : 'navMenu'}>
             <ul>
-              <li><Link onClick={this.toggleMenu} to="/">Waiting Screen</Link></li>
-              <li><Link onClick={this.toggleMenu} to="/players">Players</Link></li>
-              <li><Link onClick={this.toggleMenu} to="/vote">Vote</Link></li>
+              <li><Link onClick={this.toggleMenu} to='/'>{'Waiting Screen'}</Link></li>
+              <li><Link onClick={this.toggleMenu} to='/players'>{'Players'}</Link></li>
+              <li><Link onClick={this.toggleMenu} to='/vote'>{'Vote'}</Link></li>
 
             </ul>
           </div>
         </div>
-        <div className={"innerContainer"}>
+        <div className={'innerContainer'}>
           {this.props.children}
         </div>
 

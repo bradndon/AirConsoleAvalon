@@ -1,13 +1,14 @@
 import React from 'react'
-import {JoinGame, Waiting} from "components"
+import {JoinGame, Waiting} from 'components'
+import { connect } from 'react-redux'
 
-import "./MenuContainer.css"
+import './MenuContainer.css'
 
 
 class MenuContainer extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {value: '', hasJoined: false};
+    super(props)
+    this.state = {value: '', hasJoined: false}
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,20 +18,20 @@ class MenuContainer extends React.Component {
   }
   handleSubmit(event) {
     this.setState({hasJoined: true})
-    event.preventDefault();
+    event.preventDefault()
   }
   render () {
-    return ( this.state.hasJoined ?
-      <div className="menuContainer">
+    return (this.state.hasJoined ?
+      <div className='menuContainer'>
         <Waiting name={this.state.value}/>
       </div>
-      : <div className="menuContainer">
-          <JoinGame handleSubmit={this.handleSubmit}
-                    handleChange={this.handleChange}
-                    name={this.state.value}/>
+      : <div className='menuContainer'>
+        <JoinGame handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          name={this.state.value}/>
       </div>
     )
   }
 }
 
-export default MenuContainer;
+export default connect()(MenuContainer)

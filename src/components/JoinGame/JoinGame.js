@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
-import "./JoinGame.css"
+import './JoinGame.css'
 
 const JoinGame = ({handleSubmit, handleChange, name}) => {
   return (
-      <form  className={"joinGame"} onSubmit={handleSubmit}>
-        <input type="text" value={name} onChange={handleChange}/>
-        <input type="submit" value="Join Game"/>
+      <form  className={'joinGame'} onSubmit={handleSubmit}>
+        <input type='text' value={name} onChange={handleChange}/>
+        <input type='submit' value='Join Game'/>
       </form>
   )
 }
@@ -13,7 +13,7 @@ const JoinGame = ({handleSubmit, handleChange, name}) => {
 JoinGame.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 }
 
 export default JoinGame
