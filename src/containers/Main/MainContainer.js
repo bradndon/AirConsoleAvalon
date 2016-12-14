@@ -35,4 +35,4 @@ class MainContainer extends React.Component {
   }
 }
 
-export default MainContainer;
+export default MainContainer

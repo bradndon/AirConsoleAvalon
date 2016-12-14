@@ -6,7 +6,7 @@ class VoteContainer extends React.Component {
     super()
     this.state = {
       isApproving: false,
-      names: ['Brandon', 'Geneva', 'Dana', 'Isaac']
+      names: ['Brandon', 'Geneva', 'Dana', 'Isaac'],
     }
   }
   approve() {
@@ -27,4 +27,4 @@ class VoteContainer extends React.Component {
   }
 }
 
-export default VoteContainer;
+export default VoteContainer
