@@ -21,8 +21,6 @@ class MainContainer extends React.Component {
             <ul>
               <li><Link onClick={this.toggleMenu} to='/'>{'Waiting Screen'}</Link></li>
               <li><Link onClick={this.toggleMenu} to='/players'>{'Players'}</Link></li>
-              <li><Link onClick={this.toggleMenu} to='/vote'>{'Vote'}</Link></li>
-
             </ul>
           </div>
         </div>

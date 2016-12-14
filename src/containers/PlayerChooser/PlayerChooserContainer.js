@@ -8,7 +8,7 @@ import * as voteActionCreators from 'redux/modules/votes'
 class PlayerChooserContainer extends React.Component {
   componentWillMount() {
     // TODO: move to before this component opens
-    this.props.addVote({}, 1)
+    this.props.addVote({}, 2)
   }
   handleTap(index, e) {
     e.stopPropagation()
