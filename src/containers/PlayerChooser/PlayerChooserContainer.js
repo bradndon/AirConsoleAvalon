@@ -39,6 +39,12 @@ class PlayerChooserContainer extends React.Component {
   }
 }
 
+PlayerChooserContainer.propTypes = {
+  vote: PropTypes.object.isRequired,
+  players: PropTypes.array.isRequired,
+  voteOrUnvotePlayer: PropTypes.func.isRequired,
+}
+
 PlayerChooserContainer.contextTypes = {
   router: PropTypes.object.isRequired,
 }
