@@ -6,7 +6,7 @@ const CHOOSE_PLAYER = 'CHOOSE_PLAYER'
 export function choosePlayer(deviceId) {
   return {
     type: CHOOSE_PLAYER,
-    deviceId
+    deviceId,
   }
 }
 
@@ -14,7 +14,7 @@ const initialPlayerState = {
   deviceId: '',
   name: '',
   role: '',
-  chosen: false
+  chosen: false,
 }
 
 function player ( state=initialPlayerState, action) {
@@ -23,17 +23,17 @@ function player ( state=initialPlayerState, action) {
       return {
         ...state,
         deviceId: action.deviceId,
-        name: action.name
+        name: action.name,
       }
     case ADD_ROLE:
       return {
         ...state,
-        role: action.role
+        role: action.role,
       }
     case CHOOSE_PLAYER:
       return {
         ...state,
-        chosen: !state.chosen
+        chosen: !state.chosen,
       }
     default:
       return state
@@ -45,8 +45,8 @@ const initialState = {
   1: {
     'name': 'Brandon',
     'chosen': false,
-    'deviceId': 1
-   }
+    'deviceId': 1,
+  },
 }
 
 export default function players (state = initialState, action) {
@@ -54,17 +54,17 @@ export default function players (state = initialState, action) {
     case ADD_PLAYER:
       return {
         ...state,
-        [action.deviceId]: player(state[action.deviceId], action)
+        [action.deviceId]: player(state[action.deviceId], action),
       }
     case ADD_ROLE:
       return {
         ...state,
-        [action.deviceId]: player(state[action.deviceId], action)
+        [action.deviceId]: player(state[action.deviceId], action),
       }
     case CHOOSE_PLAYER:
       return {
         ...state,
-        [action.deviceId]: player(state[action.deviceId], action)
+        [action.deviceId]: player(state[action.deviceId], action),
       }
     default:
       return state
