@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
-import './JoinGame.css'
+import { Button } from 'components'
 import styled from 'styled-components'
 
-const Form = styled.form`
+const Container = styled.div`
   background-color: rgba(0,0,50,0.6);
   padding: 50px;
   width: 100%;
@@ -31,20 +31,12 @@ const TextInput = styled.input`
   }
 `
 
-const SubmitButton = styled.input`
-  background-color: white;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  padding: 10px 15px;
-`
-
 const JoinGame = ({handleSubmit, handleChange, name}) => {
   return (
-      <Form onSubmit={handleSubmit}>
+      <Container>
         <TextInput type='text' value={name} onChange={handleChange}/>
-        <SubmitButton type='submit' value='Join Game'/>
-      </Form>
+        <Button onClick={handleSubmit} text={"Join Game"}/>
+      </Container>
   )
 }
 
