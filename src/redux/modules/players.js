@@ -10,6 +10,14 @@ const initialPlayerState = {
   chosen: false,
 }
 
+export function addPlayer(name, deviceId) {
+  return {
+    type: ADD_PLAYER,
+    name,
+    deviceId,
+  }
+}
+
 function player ( state=initialPlayerState, action) {
   switch (action.type) {
     case ADD_PLAYER:
@@ -30,6 +38,7 @@ function player ( state=initialPlayerState, action) {
 
 const initialState = {
   deviceId: 0,
+  hasJoined: false,
   1: {
     'name': 'Brandon',
     'deviceId': 1,
@@ -38,6 +47,14 @@ const initialState = {
     'name': 'Geneva',
     'deviceId': 2,
   },
+  3: {
+    'name': 'Dana',
+    'deviceId': 3,
+  },
+  4: {
+    'name': 'Kenzie',
+    'deviceId': 4,
+  },
 }
 
 export default function players (state = initialState, action) {
@@ -45,6 +62,8 @@ export default function players (state = initialState, action) {
     case ADD_PLAYER:
       return {
         ...state,
+        deviceId: action.deviceId,
+        hasJoined: true,
         [action.deviceId]: player(state[action.deviceId], action),
       }
     case ADD_ROLE:

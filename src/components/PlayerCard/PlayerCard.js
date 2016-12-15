@@ -6,7 +6,7 @@ const PlayerCard = ({name, chosen, handleTap}) => {
     <div className='playerCard'>
       <div onClick={handleTap} className={chosen ? 'selected' : ''}>
         <h3>{name}</h3>
-        <p>{'0Q, 0S, 0L'}</p>
+        {/* <p>{'0Q, 0S, 0L'}</p> */}
       </div>
     </div>
   )
