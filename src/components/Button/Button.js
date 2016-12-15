@@ -9,13 +9,14 @@ const StyledButton = styled.button`
   padding: 10px 15px;
 `
 
-const Button = ({text, onClick}) => {
-  return <StyledButton onClick={onClick}>{text}</StyledButton>
+const Button = ({text, onClick, disabled}) => {
+  return <StyledButton disabled={disabled} onClick={onClick}>{text}</StyledButton>
 }
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 }
 
 export default Button
