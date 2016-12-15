@@ -158,15 +158,15 @@ You would need to install an ESLint plugin for your editor first.
 
 >If you are using the Atom `linter-eslint` plugin, make sure that **Use global ESLint installation** option is checked:
 
-><img src='http://i.imgur.com/yVNNHJM.png' width='300'>
+><img src="http://i.imgur.com/yVNNHJM.png" width="300">
 
 Then add this block to the `package.json` file of your project:
 
 ```js
 {
   // ...
-  'eslintConfig': {
-    'extends': 'react-app'
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
 ```
@@ -217,7 +217,7 @@ import Button from './Button'; // Import a component from another file
 
 class DangerButton extends Component {
   render() {
-    return <Button color='red' />;
+    return <Button color="red" />;
   }
 }
 
@@ -257,7 +257,7 @@ import './Button.css'; // Tell Webpack that Button.js uses these styles
 class Button extends Component {
   render() {
     // You can use them as regular CSS styles
-    return <div className='Button' />;
+    return <div className="Button" />;
   }
 }
 ```
@@ -317,7 +317,7 @@ console.log(logo); // /logo.84287d09.png
 
 function Header() {
   // Import result is the URL of your image
-  return <img src={logo} alt='Logo' />;
+  return <img src={logo} alt="Logo" />;
 }
 
 export default function Header;
@@ -357,7 +357,7 @@ If you put a file into the `public` folder, it will **not** be processed by Webp
 Inside `index.html`, you can use it like this:
 
 ```html
-<link rel='shortcut icon' href='%PUBLIC_URL%/favicon.ico'>
+<link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 ```
 
 Only files inside the `public` folder will be accessible by `%PUBLIC_URL%` prefix. If you need to use a file from `src` or `node_modules`, you’ll have to copy it there to explicitly specify your intention to make this file a part of the build.
@@ -458,7 +458,7 @@ render() {
     <div>
       <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
       <form>
-        <input type='hidden' defaultValue={process.env.REACT_APP_SECRET_CODE} />
+        <input type="hidden" defaultValue={process.env.REACT_APP_SECRET_CODE} />
       </form>
     </div>
   );
@@ -473,7 +473,7 @@ When you load the app in the browser and inspect the `<input>`, you will see its
 <div>
   <small>You are running this application in <b>development</b> mode.</small>
   <form>
-    <input type='hidden' value='abcdef' />
+    <input type="hidden" value="abcdef" />
   </form>
 </div>
 ```
@@ -564,7 +564,7 @@ Such setup is **not** required. However, if you **do** have a setup like this, i
 To tell the development server to proxy any unknown requests to your API server in development, add a `proxy` field to your `package.json`, for example:
 
 ```js
-  'proxy': 'http://localhost:4000',
+  "proxy": "http://localhost:4000",
 ```
 
 This way, when you `fetch('/api/todos')` in development, the development server will recognize that it’s not a static asset, and will proxy your request to `http://localhost:4000/api/todos` as a fallback. The development server will only attempt to send requests without a `text/html` accept header to the proxy.
@@ -587,7 +587,7 @@ If the `proxy` option is **not** flexible enough for you, alternatively you can:
 
 >Note: this feature is available with `react-scripts@0.4.0` and higher.
 
-You may require the dev server to serve pages over HTTPS. One particular case where this could be useful is when using [the 'proxy' feature](#proxying-api-requests-in-development) to proxy requests to an API server when that API server is itself serving HTTPS.
+You may require the dev server to serve pages over HTTPS. One particular case where this could be useful is when using [the "proxy" feature](#proxying-api-requests-in-development) to proxy requests to an API server when that API server is itself serving HTTPS.
 
 To do this, set the `HTTPS` environment variable to `true`, then start the dev server as usual with `npm start`:
 
@@ -613,10 +613,10 @@ Since Create React App doesn’t support server rendering, you might be wonderin
 
 ```html
 <!doctype html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta property='og:title' content='%OG_TITLE%'>
-    <meta property='og:description' content='%OG_DESCRIPTION%'>
+    <meta property="og:title" content="%OG_TITLE%">
+    <meta property="og:description" content="%OG_DESCRIPTION%">
 ```
 
 Then, on the server, regardless of the backend you use, you can read `index.html` into memory and replace `%OG_TITLE%`, `%OG_DESCRIPTION%`, and any other placeholders with values depending on the current URL. Just make sure to sanitize and escape the interpolated values so that they are safe to embed into HTML!
@@ -834,9 +834,9 @@ By default, the `package.json` of the generated project looks like this:
 
 ```js
   // ...
-  'scripts': {
+  "scripts": {
     // ...
-    'test': 'react-scripts test --env=jsdom'
+    "test": "react-scripts test --env=jsdom"
   }
 ```
 
@@ -869,7 +869,7 @@ By default, Create React App produces a build assuming your app is hosted at the
 To override this, specify the `homepage` in your `package.json`, for example:
 
 ```js
-  'homepage': 'http://mywebsite.com/relativepath',
+  "homepage": "http://mywebsite.com/relativepath",
 ```
 
 This will let Create React App correctly infer the root path to use in the generated HTML file.
@@ -881,7 +881,7 @@ This will let Create React App correctly infer the root path to use in the gener
 Open your `package.json` and add a `homepage` field:
 
 ```js
-  'homepage': 'http://myusername.github.io/my-app',
+  "homepage": "http://myusername.github.io/my-app",
 ```
 
 **The above step is important!**<br>
@@ -899,9 +899,9 @@ Add the following script in your `package.json`:
 
 ```js
   // ...
-  'scripts': {
+  "scripts": {
     // ...
-    'deploy': 'gh-pages -d build'
+    "deploy": "gh-pages -d build"
   }
 ```
 

@@ -1,10 +1,6 @@
 .waiting {
   background-color: rgba(0,0,50,0.6);
   padding: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 .waiting h2 {
@@ -12,10 +8,9 @@
   color: white;
   letter-spacing: 1px;
   width:100%;
-  margin-bottom: 15px;
 }
 
-.waiting p {
+p {
   color: white;;
   text-align: center;
 }
