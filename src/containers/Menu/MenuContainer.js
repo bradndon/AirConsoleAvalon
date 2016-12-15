@@ -10,8 +10,6 @@ class MenuContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {value: ''}
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(event) {
     this.setState({value: event.target.value})
@@ -20,14 +18,19 @@ class MenuContainer extends React.Component {
     this.props.addPlayer(this.state.value, this.props.numPlayers + 1)
     event.preventDefault()
   }
+  startGame() {
+    console.warn("startGame")
+  }
   render () {
     return (this.props.hasJoined ?
-      <div className='menuContainer'>
-        <Waiting name={this.state.value}/>
-      </div>
+      (<div className='menuContainer'>
+        <Waiting name={this.state.value}
+          gameReady={this.props.numPlayers >= 5}
+          startGame={()=>this.startGame()}/>
+      </div>)
       : <div className='menuContainer'>
-        <JoinGame handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
+        <JoinGame handleSubmit={(e)=>this.handleSubmit(e)}
+          handleChange={(e)=>this.handleChange(e)}
           name={this.state.value}/>
       </div>
     )
