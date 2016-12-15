@@ -1,15 +1,11 @@
 import ReactDOM from 'react-dom';
-import routes from './config/routes';
+import routes from 'config/routes';
 import './index.css';
-import AirConsole from 'airconsole/airconsole-1.6.0'
+import airconsole from 'constants/airconsole'
 
-var airconsole = new AirConsole({"orientation": "portrait"});
-airconsole.onMessage = function(device_id, data) {
-  if (data.action === "PLAYER_JOIN") {
-    
-  }
-}
+console.warn(airconsole)
+
 ReactDOM.render(
    routes,
   document.getElementById('root')
-);
+)
