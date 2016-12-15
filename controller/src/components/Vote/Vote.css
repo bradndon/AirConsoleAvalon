@@ -1,0 +1,44 @@
+.vote {
+  height: 100%;
+
+}
+
+.vote__small {
+  height: 10%;
+  background-color: #303030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.vote__small p {
+  text-align: center;
+  color: white;
+}
+
+.vote__option {
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vote__option--approve {
+  background-color: green;
+}
+
+.vote__option--reject {
+  background-color: red;
+}
+
+.vote__option--selected {
+  box-shadow: inset 0px 0px 10px 5px rgba(48,48,48,0.8);
+}
+
+.vote__submit {
+  background-color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  padding: 10px 15px;
+}
