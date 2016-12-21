@@ -4,9 +4,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as playerActionCreators from 'redux/modules/players'
 import './MenuContainer.css'
-import airconsole from 'constants/airconsole'
-import AirConsole from 'airconsole/airconsole-1.6.0.js'
-
 
 class MenuContainer extends React.Component {
   constructor(props) {
@@ -14,10 +11,7 @@ class MenuContainer extends React.Component {
     this.state = {value: ''}
   }
   componentDidMount() {
-    airconsole.onReady(function() {
-      console.warn("ADFA")
-      airconsole.message(AirConsole.SCREEN, "Hello!")
-    })
+
   }
   handleChange(event) {
     this.setState({value: event.target.value})
