@@ -43,6 +43,31 @@ describe("Voting", () => {
         }
       ])
     })
+    it('should add a second vote', () => {
+      expect(
+        reducer([
+          {
+            quest: 0,
+            playerLimit: 4,
+            players: {}
+          }
+        ], {
+          type: types.ADD_VOTE,
+          quest: 1,
+          playerLimit: 5,
+        })
+      ).toEqual([
+        {
+          quest: 0,
+          playerLimit: 4,
+          players: {}
+        }, {
+          quest: 1,
+          playerLimit: 5,
+          players: {}
+        }
+      ])
+    })
     it('should vote for a new player', () => {
       expect(
         reducer([
@@ -52,7 +77,7 @@ describe("Voting", () => {
             players: {}
           }
         ], {
-          types: types.VOTE_PLAYER,
+          type: types.VOTE_PLAYER,
           deviceId: 0
         })
       ).toEqual([
@@ -76,7 +101,7 @@ describe("Voting", () => {
             }
           }
         ], {
-          types: types.VOTE_PLAYER,
+          type: types.VOTE_PLAYER,
           deviceId: 0
         })
       ).toEqual([
@@ -100,7 +125,7 @@ describe("Voting", () => {
             }
           }
         ], {
-          types: types.VOTE_PLAYER,
+          type: types.VOTE_PLAYER,
           deviceId: 0
         })
       ).toEqual([
