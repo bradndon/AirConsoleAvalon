@@ -84,7 +84,8 @@
     "testPathIgnorePatterns": [
       "<rootDir>/(build|docs|node_modules)/"
     ],
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "modulePaths": ["src"]
   },
   "babel": {
     "presets": [
