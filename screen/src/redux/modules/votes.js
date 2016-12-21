@@ -57,15 +57,7 @@ function vote(state = initialVoteState, action) {
         ...state,
         players: {
           ...state.players,
-          [action.deviceId]: true,
-        },
-      }
-    case UNVOTE_PLAYER:
-      return {
-        ...state,
-        players: {
-          ...state.players,
-          [action.deviceId]: false,
+          [action.deviceId]: !state.players,
         },
       }
     default:
@@ -87,11 +79,6 @@ export default function votes (state = initialState, action) {
         },
       ]
     case VOTE_PLAYER:
-      return [
-          ...state,
-          vote(state[state.length-1], action),
-        ]
-    case UNVOTE_PLAYER:
       return [
           ...state,
           vote(state[state.length-1], action),
