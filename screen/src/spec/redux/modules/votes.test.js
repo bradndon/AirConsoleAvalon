@@ -23,4 +23,95 @@ describe("Voting", () => {
       expect(actions.votePlayer(deviceId)).toEqual(expectedAction)
     })
   })
+
+  describe("Reducer", () => {
+    it('should return the initial state', () => {
+      expect(reducer(undefined, {})).toEqual([])
+    })
+    it('should add a new vote', () => {
+      expect(
+        reducer([], {
+          type: types.ADD_VOTE,
+          quest: 0,
+          playerLimit: 4,
+        })
+      ).toEqual([
+        {
+          quest: 0,
+          playerLimit: 4,
+          players: {}
+        }
+      ])
+    })
+    it('should vote for a new player', () => {
+      expect(
+        reducer([
+          {
+            quest: 0,
+            playerLimit: 4,
+            players: {}
+          }
+        ], {
+          types: types.VOTE_PLAYER,
+          deviceId: 0
+        })
+      ).toEqual([
+        {
+          quest: 0,
+          playerLimit: 4,
+          players: {
+            0: true
+          }
+        }
+      ])
+    })
+    it('should vote for a player that has been chosen before', () => {
+      expect(
+        reducer([
+          {
+            quest: 0,
+            playerLimit: 4,
+            players: {
+              0: false,
+            }
+          }
+        ], {
+          types: types.VOTE_PLAYER,
+          deviceId: 0
+        })
+      ).toEqual([
+        {
+          quest: 0,
+          playerLimit: 4,
+          players: {
+            0: true
+          }
+        }
+      ])
+    })
+    it('should unvote for a player', () => {
+      expect(
+        reducer([
+          {
+            quest: 0,
+            playerLimit: 4,
+            players: {
+              0: true,
+            }
+          }
+        ], {
+          types: types.VOTE_PLAYER,
+          deviceId: 0
+        })
+      ).toEqual([
+        {
+          quest: 0,
+          playerLimit: 4,
+          players: {
+            0: false
+          }
+        }
+      ])
+    })
+  })
 })
