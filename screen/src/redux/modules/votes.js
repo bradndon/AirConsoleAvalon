@@ -22,21 +22,6 @@ export function unvotePlayer (deviceId) {
   }
 }
 
-export function voteOrUnvotePlayer (deviceId) {
-  return function (dispatch, getState)  {
-    let currentVote = getState().votes[getState().votes.length-1]
-    let currentCount = Object.keys(currentVote.players)
-      .reduce((a,b)=> currentVote.players[b] === true ? a+1 : a, 0)
-    if (currentVote.players[deviceId]) {
-      dispatch(unvotePlayer(deviceId))
-    } else {
-      if (currentCount < currentVote.playerLimit) {
-        dispatch(votePlayer(deviceId))
-      }
-    }
-  }
-}
-
 const initialVoteState = {
   players: {},
   quest: {},
