@@ -1,15 +1,9 @@
-import airconsole from 'constants/airconsole'
-import AirConsole from 'airconsole/airconsole-1.6.0.js'
-
-const ADD_PLAYER = 'ADD_PLAYER'
-const ADD_ROLE = 'ADD_ROLE'
-
+import { ADD_PLAYER, ADD_ROLE } from 'constants/ActionTypes'
 
 const initialPlayerState = {
   deviceId: '',
   name: '',
   role: '',
-  chosen: false,
 }
 
 export function addPlayer(name, deviceId) {
@@ -17,6 +11,14 @@ export function addPlayer(name, deviceId) {
     type: ADD_PLAYER,
     name,
     deviceId,
+  }
+}
+
+export function addRole(role, deviceId) {
+  return {
+    type: ADD_ROLE,
+    role,
+    deviceId
   }
 }
 
@@ -38,24 +40,7 @@ function player ( state=initialPlayerState, action) {
   }
 }
 
-const initialState = {
-  1: {
-    'name': 'Brandon',
-    'deviceId': 1,
-  },
-  2: {
-    'name': 'Geneva',
-    'deviceId': 2,
-  },
-  3: {
-    'name': 'Dana',
-    'deviceId': 3,
-  },
-  4: {
-    'name': 'Kenzie',
-    'deviceId': 4,
-  },
-}
+const initialState = {}
 
 export default function players (state = initialState, action) {
   switch (action.type) {
