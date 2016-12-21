@@ -42,7 +42,7 @@ function vote(state = initialVoteState, action) {
         ...state,
         players: {
           ...state.players,
-          [action.deviceId]: !state.players,
+          [action.deviceId]: !state.players[action.deviceId],
         },
       }
     default:
@@ -65,7 +65,7 @@ export default function votes (state = initialState, action) {
       ]
     case VOTE_PLAYER:
       return [
-          ...state,
+          ...state.splice(0, state.length-1),
           vote(state[state.length-1], action),
         ]
     default:
