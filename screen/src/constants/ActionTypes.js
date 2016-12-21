@@ -1,2 +1,5 @@
 export const ADD_PLAYER = 'ADD_PLAYER'
 export const ADD_ROLE = 'ADD_ROLE'
+export const ADD_VOTE = 'ADD_VOTE'
+export const VOTE_PLAYER = 'VOTE_PLAYER'
+export const UNVOTE_PLAYER = 'UNVOTE_PLAYER'
