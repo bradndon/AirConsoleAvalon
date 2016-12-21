@@ -1,6 +1,7 @@
 import * as actions from 'redux/modules/players'
-import players from 'redux/modules/players'
+import reducer from 'redux/modules/players'
 import * as types from 'constants/ActionTypes'
+
 describe('Players', ()=> {
   describe('Actions', ()=> {
     it('should create an action to add a player', () => {
@@ -26,10 +27,10 @@ describe('Players', ()=> {
   })
   describe('Reducer', () => {
     it('should return the initial state', ()=> {
-      expect(players(undefined, {})).toEqual({})
+      expect(reducer(undefined, {})).toEqual({})
     })
     it('should add a first player', ()=> {
-      expect(players({}, {
+      expect(reducer({}, {
         type: types.ADD_PLAYER,
         name: "Brandon",
         deviceId: 0,
@@ -43,7 +44,7 @@ describe('Players', ()=> {
       })
     })
     it('should add another player', ()=> {
-      expect(players({
+      expect(reducer({
         0: {
           role: '',
           name: "Brandon",
@@ -71,7 +72,7 @@ describe('Players', ()=> {
     })
     it('should add a role to a player', ()=> {
       expect(
-        players({
+        reducer({
           0: {
             role: '',
             name: "Brandon",
