@@ -1,4 +1,5 @@
 import { ADD_VOTE, UNVOTE_PLAYER, VOTE_PLAYER } from 'constants/ActionTypes'
+import { createSelector } from 'reselect'
 
 export function addVote (quest, playerLimit) {
   return {
@@ -72,3 +73,9 @@ export default function votes (state = initialState, action) {
       return state
   }
 }
+const currentVote = state => state[state.length-1]
+
+export const getPlayerCount = createSelector(
+  currentVote,
+  vote => Object.keys(vote.players).reduce((a,b)=> vote.players[b] === true ? a+1 : a, 0)
+)
