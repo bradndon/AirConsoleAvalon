@@ -7,5 +7,7 @@ cache:
     - controller/node_modules
 install: ./install_dependencies.sh
 script:
-  - npm test
-  - npm run build
+  - cd screen && npm test && cd ..
+  - cd controller && npm test && cd ..
+  - cd controller && npm run build && cd ..
+  - cd screen && npm run build && cd ..
