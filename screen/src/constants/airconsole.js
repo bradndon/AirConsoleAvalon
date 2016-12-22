@@ -1,4 +1,4 @@
-import AirConsole from 'airconsole/airconsole-1.6.0.js'
+import AirConsole from 'airconsole-api/airconsole-1.6.0.js'
 
 const airconsole = new AirConsole()
 

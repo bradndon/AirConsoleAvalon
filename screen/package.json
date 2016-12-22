@@ -50,6 +50,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "airconsole": "git://github.com/bradndon/airconsole-api.git#c62cdc64ca8e145078abe4cd6db99595167f4097",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.2",
