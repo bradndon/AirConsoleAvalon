@@ -74,7 +74,9 @@ describe("Voting", () => {
           {
             quest: 0,
             playerLimit: 4,
-            players: {}
+            players: {
+              1:true
+            }
           }
         ], {
           type: types.VOTE_PLAYER,
@@ -85,7 +87,8 @@ describe("Voting", () => {
           quest: 0,
           playerLimit: 4,
           players: {
-            0: true
+            0: true,
+            1:true
           }
         }
       ])
