@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "./deploy.sh && gh-pages -d dist"
+    "test": "cd screen && npm test",
+    "deploy": "./deploy.sh && gh-pages -d dist",
+    "build": "./deploy.sh",
   },
   "repository": {
     "type": "git",
