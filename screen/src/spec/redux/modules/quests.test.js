@@ -53,25 +53,25 @@ describe("Quests", ()=> {
     })
     it("should set a successful quest", () => {
       expect(reducer({1: {}},
-        {
-          type: types.QUEST_SUCCESS,
-          questId: 1
-        })).toEqual({
-          1: {
-            hasSucceeded: true
-          }
-        })
+      {
+        type: types.QUEST_SUCCESS,
+        questId: 1
+      })).toEqual({
+        1: {
+          hasSucceeded: true
+        }
+      })
     })
     it("should set a failure quest", () => {
       expect(reducer({1: {}},
-        {
-          type: types.QUEST_FAILURE,
-          questId: 1
-        })).toEqual({
-          1: {
-            hasSucceeded: false
-          }
-        })
+      {
+        type: types.QUEST_FAILURE,
+        questId: 1
+      })).toEqual({
+        1: {
+          hasSucceeded: false
+        }
+      })
     })
 
   })
