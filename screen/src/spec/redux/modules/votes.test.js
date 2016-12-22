@@ -189,5 +189,35 @@ describe("Voting", () => {
         ])).toEqual(3)
       })
     })
+    describe('atLimit', () => {
+      it('should return false if below limit', () => {
+        expect(actions.atLimit([
+          {
+            quest: 0,
+            playerLimit: 4,
+            players: {
+              1: true,
+              2: true,
+              3: true,
+              5: false
+            }
+          }
+        ])).toEqual(false)
+      })
+      it('should return true if at limit', () => {
+        expect(actions.atLimit([
+          {
+            quest: 0,
+            playerLimit: 4,
+            players: {
+              1: true,
+              2: true,
+              3: true,
+              5: true
+            }
+          }
+        ])).toEqual(true)
+      })
+    })
   })
 })
