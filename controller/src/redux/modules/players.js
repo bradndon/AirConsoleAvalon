@@ -1,5 +1,4 @@
 import airconsole from 'constants/airconsole'
-import AirConsole from 'airconsole/airconsole-1.6.0.js'
 
 const ADD_PLAYER = 'ADD_PLAYER'
 const ADD_ROLE = 'ADD_ROLE'
