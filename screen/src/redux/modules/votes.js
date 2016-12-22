@@ -73,7 +73,8 @@ export default function votes (state = initialState, action) {
       return state
   }
 }
-const currentVote = state => state[state.length-1]
+
+const currentVote = state => state.votes[state.votes.length-1]
 
 export const getPlayerCount = createSelector(
   currentVote,

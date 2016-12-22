@@ -61,6 +61,6 @@ export default function players (state = initialState, action) {
 }
 
 export const getPlayerNames = createSelector(
-  state=>state,
-  state => Object.keys(state).map((a)=>state[a].name)
+  state=>state.players,
+  players => Object.keys(players).map((a)=>players[a].name)
 )
