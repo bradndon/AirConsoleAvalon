@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cd screen && npm test",
     "deploy": "./deploy.sh && gh-pages -d dist",
-    "build": "./deploy.sh",
+    "build": "./deploy.sh"
   },
   "repository": {
     "type": "git",

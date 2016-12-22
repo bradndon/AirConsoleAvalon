@@ -6,6 +6,7 @@ cache:
   directories:
     - screen/node_modules
     - controller/node_modules
+install: ./install_dependencies.sh
 script:
   - npm test
   - npm run build
