@@ -43,7 +43,8 @@ describe("Quests", ()=> {
         1: {}
       }, {
         type: types.QUEST_SET_VOTE,
-        voteId: 1
+        voteId: 1,
+        questId: 1
       })).toEqual({
         1: {
           finalVote: 1,
