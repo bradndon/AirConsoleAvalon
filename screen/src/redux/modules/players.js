@@ -1,4 +1,5 @@
 import { ADD_PLAYER, ADD_ROLE } from 'constants/ActionTypes'
+import { createSelector } from 'reselect'
 
 const initialPlayerState = {
   deviceId: '',
@@ -58,3 +59,8 @@ export default function players (state = initialState, action) {
       return state
   }
 }
+
+export const getPlayerNames = createSelector(
+  state=>state,
+  state => Object.keys(state).map((a)=>state[a].name)
+)

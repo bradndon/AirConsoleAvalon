@@ -96,4 +96,24 @@ describe('Players', ()=> {
       )
     })
   })
+  describe('Selectors', () => {
+    describe('getPlayerNames', () => {
+      it('should return an empty array if there are no players', () => {
+        expect(actions.getPlayerNames({})).toEqual([])
+      })
+      it('should return an array with the proper player names', () => {
+        expect(actions.getPlayerNames({
+          0: {
+            name: "Brandon"
+          },
+          1: {
+            name: "Isaac"
+          },
+          2: {
+            name: "Jacob"
+          }
+        })).toEqual(["Brandon", "Isaac", "Jacob"])
+      })
+    })
+  })
 })
