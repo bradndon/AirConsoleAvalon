@@ -79,3 +79,9 @@ export const getPlayerCount = createSelector(
   currentVote,
   vote => Object.keys(vote.players).reduce((a,b)=> vote.players[b] === true ? a+1 : a, 0)
 )
+
+export const atLimit = createSelector(
+  getPlayerCount,
+  currentVote,
+  (count, vote) => vote.playerLimit <= count
+)
