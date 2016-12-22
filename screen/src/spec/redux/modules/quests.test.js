@@ -3,6 +3,44 @@ import reducer from 'redux/modules/quests'
 import * as types from 'constants/ActionTypes'
 
 describe("Quests", ()=> {
+  describe("Action Creators", ()=> {
+    it("should create an action to add a vote", () => {
+      const questId = 1
+      const voteId = 1
+      const expectedAction = {
+        type: types.QUEST_ADD_VOTE,
+        questId,
+        voteId
+      }
+      expect(actions.questAddVote(questId, voteId)).toEqual(expectedAction)
+    })
+    it("should create an action to set a vote", () => {
+      const questId = 1
+      const voteId = 1
+      const expectedAction = {
+        type: types.QUEST_SET_VOTE,
+        questId,
+        voteId
+      }
+      expect(actions.questSetVote(questId, voteId)).toEqual(expectedAction)
+    })
+    it("should create an action to set a successful quest", () => {
+      const questId = 1
+      const expectedAction = {
+        type: types.QUEST_SUCCESS,
+        questId
+      }
+      expect(actions.questSuccess(questId)).toEqual(expectedAction)
+    })
+    it("should create an action to set a failed quest", () => {
+      const questId = 1
+      const expectedAction = {
+        type: types.QUEST_FAILURE,
+        questId
+      }
+      expect(actions.questFail(questId)).toEqual(expectedAction)
+    })
+  })
   describe("Reducer", ()=> {
     it("should return the inital state", ()=> {
       expect(reducer(undefined, {})).toEqual({

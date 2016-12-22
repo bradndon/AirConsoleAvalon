@@ -1,4 +1,34 @@
-import { QUEST_ADD_VOTE, QUEST_SET_VOTE } from 'constants/ActionTypes'
+import { QUEST_ADD_VOTE, QUEST_SET_VOTE, QUEST_SUCCESS, QUEST_FAILURE } from 'constants/ActionTypes'
+
+export function questAddVote(questId, voteId) {
+  return {
+    type: QUEST_ADD_VOTE,
+    questId,
+    voteId
+  }
+}
+
+export function questSetVote(questId, voteId) {
+  return {
+    type: QUEST_SET_VOTE,
+    questId,
+    voteId
+  }
+}
+
+export function questSuccess(questId) {
+  return {
+    type: QUEST_SUCCESS,
+    questId,
+  }
+}
+
+export function questFail(questId) {
+  return {
+    type: QUEST_FAILURE,
+    questId,
+  }
+}
 
 const initialState = {
   1: {
@@ -32,6 +62,16 @@ function quest(state={}, action) {
       return {
         ...state,
         finalVote: action.voteId
+      }
+    case QUEST_SUCCESS:
+      return {
+        ...state,
+        hasSucceeded: true
+      }
+    case QUEST_FAILURE:
+      return {
+        ...state,
+        hasSucceeded: false
       }
     default:
       return state
