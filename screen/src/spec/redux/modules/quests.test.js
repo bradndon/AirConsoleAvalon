@@ -53,28 +53,39 @@ describe("Quests", ()=> {
   })
   describe("Reducer", ()=> {
     it("should return the inital state", ()=> {
-      expect(reducer(undefined, {})).toEqual({
+      expect(reducer(undefined, {})).toEqual({})
+    })
+    it("should start the game with the right number of players", ()=> {
+      expect(reducer({},{
+        type: types.START_GAME,
+        playerCount: 5
+      })).toEqual({
         1: {
+          playerCount: 2,
           votes: {},
           success: 0,
           fail: 0
         },
         2: {
+          playerCount: 2,
           votes: {},
           success: 0,
           fail: 0
         },
         3: {
+          playerCount: 3,
           votes: {},
           success: 0,
           fail: 0
         },
         4: {
+          playerCount: 2,
           votes: {},
           success: 0,
           fail: 0
         },
         5: {
+          playerCount: 3,
           votes: {},
           success: 0,
           fail: 0

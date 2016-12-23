@@ -11,3 +11,5 @@ export const QUEST_ADD_SUCCESS = 'QUEST_ADD_SUCCESS'
 export const QUEST_ADD_FAIL = 'QUEST_ADD_FAIL'
 
 export const QUEST_FINISH = 'QUEST_FINISH'
+
+export const START_GAME = 'START_GAME'
