@@ -40,6 +40,22 @@ describe("Quests", ()=> {
       }
       expect(actions.questFail(questId)).toEqual(expectedAction)
     })
+    it("should create an action to add a success", () => {
+      const questId = 1
+      const expectedAction = {
+        type: types.QUEST_ADD_SUCCESS,
+        questId
+      }
+      expect(actions.questAddSuccess(questId)).toEqual(expectedAction)
+    })
+    it("should create an action to add a success", () => {
+      const questId = 1
+      const expectedAction = {
+        type: types.QUEST_ADD_FAIL,
+        questId
+      }
+      expect(actions.questAddFail(questId)).toEqual(expectedAction)
+    })
   })
   describe("Reducer", ()=> {
     it("should return the inital state", ()=> {
@@ -110,6 +126,18 @@ describe("Quests", ()=> {
           hasSucceeded: false
         }
       })
+    })
+    it("should add a success to the want pile", ()=> {
+      expect(reducer({1: {success: 0}}, {
+        type: types.QUEST_ADD_SUCCESS,
+        questId: 1
+      })).toEqual({1: {success: 1}})
+    })
+    it("should add a fail to the want pile", ()=> {
+      expect(reducer({1: {fail: 0}}, {
+        type: types.QUEST_ADD_FAIL,
+        questId: 1
+      })).toEqual({1: {fail: 1}})
     })
   })
 })
