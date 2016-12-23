@@ -61,19 +61,29 @@ describe("Quests", ()=> {
     it("should return the inital state", ()=> {
       expect(reducer(undefined, {})).toEqual({
         1: {
-          votes: {}
+          votes: {},
+          success: 0,
+          fail: 0
         },
         2: {
-          votes: {}
+          votes: {},
+          success: 0,
+          fail: 0
         },
         3: {
-          votes: {}
+          votes: {},
+          success: 0,
+          fail: 0
         },
         4: {
-          votes: {}
+          votes: {},
+          success: 0,
+          fail: 0
         },
         5: {
-          votes: {}
+          votes: {},
+          success: 0,
+          fail: 0
         }
       })
     })
