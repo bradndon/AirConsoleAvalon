@@ -3,11 +3,6 @@ import reducer from 'redux/modules/game'
 import * as types from 'constants/ActionTypes'
 
 describe("Game", ()=> {
-  describe("Action Creators", () => {
-    it("should create an action to go to the next quest", ()=> {
-      expect(actions.nextQuest()).toEqual({type:types.NEXT_QUEST})
-    })
-  })
   describe("Reducer", ()=> {
     it("should return the initial game state", ()=> {
       expect(reducer(undefined, {}))
@@ -15,8 +10,8 @@ describe("Game", ()=> {
           currentQuest: 1
         })
     })
-    it("should increase the quest by 1", ()=> {
-      expect(reducer({currentQuest: 1}, {type:types.NEXT_QUEST}))
+    it("should increase the quest by 1 on quest finish", ()=> {
+      expect(reducer({currentQuest: 1}, {type:types.QUEST_FINISH}))
         .toEqual({currentQuest: 2})
     })
   })
