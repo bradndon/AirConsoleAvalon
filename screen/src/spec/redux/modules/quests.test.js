@@ -24,21 +24,15 @@ describe("Quests", ()=> {
       }
       expect(actions.questSetVote(questId, voteId)).toEqual(expectedAction)
     })
-    it("should create an action to set a successful quest", () => {
+    it("should create an action to finish a quest", () => {
       const questId = 1
+      const hasSucceeded = false
       const expectedAction = {
-        type: types.QUEST_SUCCESS,
-        questId
+        type: types.QUEST_FINISH,
+        questId,
+        hasSucceeded
       }
-      expect(actions.questSuccess(questId)).toEqual(expectedAction)
-    })
-    it("should create an action to set a failed quest", () => {
-      const questId = 1
-      const expectedAction = {
-        type: types.QUEST_FAILURE,
-        questId
-      }
-      expect(actions.questFail(questId)).toEqual(expectedAction)
+      expect(actions.questFinish(questId, hasSucceeded)).toEqual(expectedAction)
     })
     it("should create an action to add a success", () => {
       const questId = 1
@@ -115,22 +109,24 @@ describe("Quests", ()=> {
         }
       })
     })
-    it("should set a successful quest", () => {
+    it("should finish a successful quest", () => {
       expect(reducer({1: {}},
       {
-        type: types.QUEST_SUCCESS,
-        questId: 1
+        type: types.QUEST_FINISH,
+        questId: 1,
+        hasSucceeded: true
       })).toEqual({
         1: {
           hasSucceeded: true
         }
       })
     })
-    it("should set a failure quest", () => {
+    it("should finish a failed quest", () => {
       expect(reducer({1: {}},
       {
-        type: types.QUEST_FAILURE,
-        questId: 1
+        type: types.QUEST_FINISH,
+        questId: 1,
+        hasSucceeded: false
       })).toEqual({
         1: {
           hasSucceeded: false

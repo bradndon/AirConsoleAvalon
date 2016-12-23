@@ -1,5 +1,5 @@
 import { QUEST_ADD_VOTE, QUEST_SET_VOTE,
-  QUEST_SUCCESS, QUEST_FAILURE,
+  QUEST_FINISH,
   QUEST_ADD_SUCCESS,
   QUEST_ADD_FAIL } from 'constants/ActionTypes'
 
@@ -19,17 +19,11 @@ export function questSetVote(questId, voteId) {
   }
 }
 
-export function questSuccess(questId) {
+export function questFinish(questId, hasSucceeded) {
   return {
-    type: QUEST_SUCCESS,
+    type: QUEST_FINISH,
     questId,
-  }
-}
-
-export function questFail(questId) {
-  return {
-    type: QUEST_FAILURE,
-    questId,
+    hasSucceeded
   }
 }
 
@@ -90,15 +84,10 @@ function quest(state={}, action) {
         ...state,
         finalVote: action.voteId
       }
-    case QUEST_SUCCESS:
+    case QUEST_FINISH:
       return {
         ...state,
-        hasSucceeded: true
-      }
-    case QUEST_FAILURE:
-      return {
-        ...state,
-        hasSucceeded: false
+        hasSucceeded: action.hasSucceeded
       }
     case QUEST_ADD_SUCCESS:
       return {

@@ -7,8 +7,6 @@ export const UNVOTE_PLAYER = 'UNVOTE_PLAYER'
 //Quest Actions
 export const QUEST_ADD_VOTE = 'QUEST_ADD_VOTE'
 export const QUEST_SET_VOTE = 'QUEST_SET_VOTE'
-export const QUEST_SUCCESS = 'QUEST_SUCCESS'
-export const QUEST_FAILURE = 'QUEST_FAILURE'
 export const QUEST_ADD_SUCCESS = 'QUEST_ADD_SUCCESS'
 export const QUEST_ADD_FAIL = 'QUEST_ADD_FAIL'
 
