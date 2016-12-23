@@ -32,19 +32,29 @@ export function questFail(questId) {
 
 const initialState = {
   1: {
-    votes: {}
+    votes: {},
+    success: 0,
+    fail: 0
   },
   2: {
-    votes: {}
+    votes: {},
+    success: 0,
+    fail: 0
   },
   3: {
-    votes: {}
+    votes: {},
+    success: 0,
+    fail: 0
   },
   4: {
-    votes: {}
+    votes: {},
+    success: 0,
+    fail: 0
   },
   5: {
-    votes: {}
+    votes: {},
+    success: 0,
+    fail: 0
   }
 }
 
