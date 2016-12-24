@@ -105,8 +105,7 @@ module.exports = {
         include: paths.appSrc,
         loader: 'babel',
         query: {
-          babelrc: false,
-          presets: [require.resolve('babel-preset-react-app'), require.resolve('babel-preset-stage-0')],
+          babelrc: true,
         }
       },
       // The notation here is somewhat confusing.
