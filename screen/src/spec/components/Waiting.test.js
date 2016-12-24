@@ -27,10 +27,17 @@ describe("components", ()=> {
       expect(enzymeWrapper.find('p').at(0).text()).toBe('bran');
       expect(enzymeWrapper.find('p').at(1).text()).toBe('gen');
     })
-    it("should render a game ready reminder if there are enough players", ()=> {
+    it("should render a game ready reminder if there are just enough players", ()=> {
       const {enzymeWrapper} = setup(["bran", "gen", "isaac", "kenz", "kirst"])
       expect(enzymeWrapper.find('h3').text()).toBe('Ready to start!')
-
+    })
+    it("should render a game ready reminder if there are almost too many players", ()=> {
+      const {enzymeWrapper} = setup(["bran", "gen", "isaac", "kenz", "kirst", "bran", "gen", "isaac", "kenz", "kirst"])
+      expect(enzymeWrapper.find('h3').text()).toBe('Ready to start!')
+    })
+    it("should not render a game ready reminder if there are too many players", ()=> {
+      const {enzymeWrapper} = setup(["bran", "gen", "isaac", "kenz", "kirst", "bran", "gen", "isaac", "kenz", "kirst", "asdf"])
+      expect(enzymeWrapper.find('h3').isEmpty()).toBe(true)
     })
   })
 })
