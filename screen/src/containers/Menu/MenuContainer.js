@@ -1,5 +1,5 @@
 import React from 'react'
-import Waiting from "../../components/Waiting/Waiting"
+import { Waiting } from "components"
 
 import "./MenuContainer.css"
 var globalVar = {}
