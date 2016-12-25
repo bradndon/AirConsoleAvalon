@@ -32,8 +32,6 @@ const Overlay = styled.div`
   }
 `
 
-
-
 const Waiting = ({players}) => {
   const GameReady = players.length >= 5 && players.length <= 10 ? <h3>Ready to start!</h3> : null
   return (
