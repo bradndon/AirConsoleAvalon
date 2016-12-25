@@ -1,12 +1,12 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { Waiting } from 'components/'
 
 function setup (players) {
   const props = {
     players
   }
-  const enzymeWrapper = shallow(<Waiting {...props}/>)
+  const enzymeWrapper = mount(<Waiting {...props}/>)
 
   return {
     props,
@@ -19,7 +19,7 @@ describe("components", ()=> {
     it("should render self", ()=> {
       const {enzymeWrapper} = setup([])
 
-      expect(enzymeWrapper.find('div').hasClass('waiting')).toBe(true)
+      expect(enzymeWrapper.find('div').exists()).toBe(true)
       expect(enzymeWrapper.find('h2').text()).toBe('Players joined:')
     })
     it("should render the list of names", ()=> {
@@ -37,7 +37,7 @@ describe("components", ()=> {
     })
     it("should not render a game ready reminder if there are too many players", ()=> {
       const {enzymeWrapper} = setup(["bran", "gen", "isaac", "kenz", "kirst", "bran", "gen", "isaac", "kenz", "kirst", "asdf"])
-      expect(enzymeWrapper.find('h3').isEmpty()).toBe(true)
+      expect(enzymeWrapper.find('h3').exists()).toBe(false)
     })
   })
 })

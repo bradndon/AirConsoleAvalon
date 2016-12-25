@@ -1,14 +1,32 @@
 import React, { PropTypes } from 'react'
-import "./Waiting.css"
+import styled from "styled-components"
+
+const Container = styled.div`
+  background-color: rgba(0,0,50,0.6);
+  padding: 50px;
+
+  h2 {
+    text-align: center;
+    color: white;
+    letter-spacing: 1px;
+    width:100%;
+  }
+
+  p {
+    color: white;;
+    text-align: center;
+  }
+
+`
 
 const Waiting = ({players}) => {
   const GameReady = players.length >= 5 && players.length <= 10 ? <h3>Ready to start!</h3> : null
   return (
-    <div className={"waiting"}>
+    <Container>
       <h2>Players joined:</h2>
       {players.map((player, index)=><p key={index}>{player}</p>)}
       {GameReady}
-    </div>
+    </Container>
   )
 }
 
