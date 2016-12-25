@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react'
 import styled from "styled-components"
+import back from './back.jpg'
 
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  background: url("./back.jpg") no-repeat;
+  background: url(${back}) no-repeat;
   background-position: center;
   background-size: cover;
 
