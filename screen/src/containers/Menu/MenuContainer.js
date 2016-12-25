@@ -16,9 +16,7 @@ class MenuContainer extends React.Component {
   }
   render () {
     return (
-      <div className="menuContainer">
-        <Waiting players={this.state.players}/>
-      </div>
+      <Waiting players={this.state.players}/>
     )
   }
 }
