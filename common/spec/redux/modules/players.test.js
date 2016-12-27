@@ -24,6 +24,13 @@ describe('Players', ()=> {
       }
       expect(actions.addRole(role, deviceId)).toEqual(expectedAction)
     })
+    it('should create an action to join the game', ()=> {
+      const deviceId = 1
+      const expectedAction = {
+        type: types.JOIN_GAME,
+        deviceId
+      }
+    })
   })
   describe('Reducer', () => {
     it('should return the initial state', ()=> {
@@ -93,6 +100,19 @@ describe('Players', ()=> {
             deviceId: 0,
           }
         }
+      )
+    })
+    it('should let the player join the game', ()=> {
+      expect(
+        reducer({},{
+          types.JOIN_GAME,
+          deviceId: 1
+        }).toEqual({
+          {
+            hasJoined:true,
+            deviceId: 1
+          }
+        })
       )
     })
   })

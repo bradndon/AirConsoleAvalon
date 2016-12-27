@@ -69,7 +69,7 @@ module.exports = {
     // We use `fallback` instead of `root` because we want `node_modules` to "win"
     // if there any conflicts. This matches Node resolution mechanism.
     // https://github.com/facebookincubator/create-react-app/issues/253
-    fallback: paths.nodePaths,
+    fallback: [paths.commonSrc, paths.nodePaths],
     root: paths.appSrc,
     // These are the reasonable defaults supported by the Node ecosystem.
     // We also include JSX as a common component filename extension to support
@@ -90,14 +90,14 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loader: 'eslint',
-        include: paths.appSrc,
+        include: [paths.appSrc, paths.commonSrc],
       }
     ],
     loaders: [
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,
-        include: paths.appSrc,
+        include: [paths.appSrc, paths.commonSrc],
         loader: 'babel',
         query: {
           babelrc: true,
