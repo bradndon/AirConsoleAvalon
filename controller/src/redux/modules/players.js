@@ -1,18 +1,8 @@
-import airconsole from 'constants/airconsole'
-
 const ADD_PLAYER = 'ADD_PLAYER'
-const ADD_ROLE = 'ADD_ROLE'
+const JOIN_GAME = 'JOIN_GAME'
 
-
-const initialPlayerState = {
-  deviceId: '',
-  name: '',
-  role: '',
-  chosen: false,
-}
 
 export function addPlayer(name, deviceId) {
-  airconsole.message(0, {type: ADD_PLAYER, name: name})
   return {
     type: ADD_PLAYER,
     name,
@@ -20,21 +10,10 @@ export function addPlayer(name, deviceId) {
   }
 }
 
-function player ( state=initialPlayerState, action) {
-  switch (action.type) {
-    case ADD_PLAYER:
-      return {
-        ...state,
-        deviceId: action.deviceId,
-        name: action.name,
-      }
-    case ADD_ROLE:
-      return {
-        ...state,
-        role: action.role,
-      }
-    default:
-      return state
+export function joinGame(deviceId) {
+  return {
+    type: JOIN_GAME,
+    deviceId
   }
 }
 
@@ -61,17 +40,11 @@ const initialState = {
 
 export default function players (state = initialState, action) {
   switch (action.type) {
-    case ADD_PLAYER:
+    case JOIN_GAME:
       return {
         ...state,
         deviceId: action.deviceId,
         hasJoined: true,
-        [action.deviceId]: player(state[action.deviceId], action),
-      }
-    case ADD_ROLE:
-      return {
-        ...state,
-        [action.deviceId]: player(state[action.deviceId], action),
       }
     default:
       return state

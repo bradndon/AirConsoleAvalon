@@ -3,6 +3,7 @@ import {JoinGame, Waiting} from 'components'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as playerActionCreators from 'redux/modules/players'
+import airconsole from 'constants/airconsole'
 import './MenuContainer.css'
 
 class MenuContainer extends React.Component {
@@ -17,7 +18,8 @@ class MenuContainer extends React.Component {
     this.setState({value: event.target.value})
   }
   handleSubmit(event) {
-    this.props.addPlayer(this.state.value, this.props.numPlayers + 1)
+    this.props.joinGame(airconsole.getDeviceId())
+    airconsole.message(0, playerActionCreators.addPlayer(this.state.value, airconsole.getDeviceId()))
     event.preventDefault()
   }
 
@@ -42,6 +44,7 @@ class MenuContainer extends React.Component {
 
 MenuContainer.propTypes = {
   hasJoined: PropTypes.bool.isRequired,
+  JoinGame: PropTypes.func.isRequired
 }
 
 function mapStateToProps ({players}) {
