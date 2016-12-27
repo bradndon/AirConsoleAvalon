@@ -105,15 +105,13 @@ describe('Players', ()=> {
     it('should let the player join the game', ()=> {
       expect(
         reducer({},{
-          types.JOIN_GAME,
+          type: types.JOIN_GAME,
           deviceId: 1
-        }).toEqual({
-          {
-            hasJoined:true,
-            deviceId: 1
-          }
         })
-      )
+      ).toEqual({
+          hasJoined:true,
+          deviceId: 1
+      })
     })
   })
   describe('Selectors', () => {
