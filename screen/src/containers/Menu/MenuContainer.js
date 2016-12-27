@@ -3,7 +3,7 @@ import { Waiting } from "components"
 import { connect } from 'react-redux'
 import { getPlayerNames } from 'redux/modules/players'
 
-class MenuContainer extends React.Component {
+export class MenuContainer extends React.Component {
   render () {
     return (
       <Waiting players={this.props.players}/>
