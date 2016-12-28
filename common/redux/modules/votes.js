@@ -51,7 +51,11 @@ function vote(state = initialVoteState, action) {
   }
 }
 
-const initialState = [
+const initialState = [{
+  players: {},
+  quest: {},
+  playerLimit: 4,
+}
 ]
 
 export default function votes (state = initialState, action) {
@@ -71,10 +75,9 @@ export default function votes (state = initialState, action) {
           vote(state[state.length-1], action),
         ]
     case SET_STATE:
-      return {
-        ...state,
+      return [
         ...action.state.votes,
-      }
+      ]
     default:
       return state
   }

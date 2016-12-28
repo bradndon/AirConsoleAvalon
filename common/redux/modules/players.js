@@ -48,7 +48,7 @@ function player ( state=initialPlayerState, action) {
   }
 }
 
-const initialState = {hasJoined: false}
+const initialState = {}
 
 export default function players (state = initialState, action) {
   switch (action.type) {

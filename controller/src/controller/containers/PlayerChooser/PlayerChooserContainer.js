@@ -46,7 +46,7 @@ PlayerChooserContainer.context = {
   router: PropTypes.object.isRequired,
 }
 
-function mapStateToProps(state, props) {
+export function mapStateToProps(state, props) {
   return {
     players: Object.keys(state.players).map((e)=>typeof state.players[e] === 'object'? state.players[e]:null).filter((e)=>e),
     vote: voteActionCreators.currentVote(state, props),

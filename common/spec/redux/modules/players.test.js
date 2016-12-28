@@ -35,7 +35,7 @@ describe('Players', ()=> {
   })
   describe('Reducer', () => {
     it('should return the initial state', ()=> {
-      expect(reducer(undefined, {})).toEqual({hasJoined: false})
+      expect(reducer(undefined, {})).toEqual({})
     })
     it('should add a first player', ()=> {
       expect(reducer({}, {

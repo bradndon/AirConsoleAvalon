@@ -49,7 +49,7 @@ MenuContainer.propTypes = {
 
 function mapStateToProps ({players}) {
   return {
-    hasJoined: players.hasJoined,
+    hasJoined: players.hasJoined || false,
     numPlayers: Object.keys(players).map((e)=>typeof players[e] === 'object'? players[e]:null).filter((e)=>e).length,
   }
 }
