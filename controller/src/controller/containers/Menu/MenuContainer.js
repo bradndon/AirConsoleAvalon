@@ -25,8 +25,7 @@ class MenuContainer extends React.Component {
   }
 
   startGame() {
-    airconsole.message(0, gameActionCreators.startGame(airconsole.getDeviceId()))
-    console.warn("startGame")
+    airconsole.message(0, gameActionCreators.startGame(airconsole.getDeviceId(), this.props.numPlayers))
   }
   render () {
     return (this.props.hasJoined ?
@@ -47,6 +46,10 @@ class MenuContainer extends React.Component {
 MenuContainer.propTypes = {
   hasJoined: PropTypes.bool.isRequired,
   joinGame: PropTypes.func.isRequired
+}
+
+MenuContainer.contextTypes = {
+  router: PropTypes.object.isRequired,
 }
 
 function mapStateToProps ({players}) {

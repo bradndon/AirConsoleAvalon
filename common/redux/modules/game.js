@@ -7,10 +7,12 @@ export function setState(state) {
   }
 }
 
-export function startGame(deviceId) {
+export function startGame(deviceId, playerCount) {
   return {
     type: START_GAME,
     deviceId,
+    playerCount,
+    route: '/players'
   }
 }
 

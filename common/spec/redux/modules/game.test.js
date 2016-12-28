@@ -14,11 +14,14 @@ describe("Game", ()=> {
     })
     it("should create an action to start the game", ()=> {
       const deviceId = 1
+      const playerCount = 5
       const expectedAction = {
         type: types.START_GAME,
-        deviceId
+        deviceId,
+        playerCount,
+        route: '/players'
       }
-      expect(actions.startGame(deviceId)).toEqual(expectedAction)
+      expect(actions.startGame(deviceId, playerCount)).toEqual(expectedAction)
     })
   })
   describe("Reducer", ()=> {
