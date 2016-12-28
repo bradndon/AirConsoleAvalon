@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import {PlayerCard, LeaderQuestInfo} from 'controller/components'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as playerActionCreators from 'redux/modules/players'
 import * as voteActionCreators from 'redux/modules/votes'
 import airconsole from 'controller/constants/airconsole'
 
@@ -13,8 +12,10 @@ export class PlayerChooserContainer extends React.Component {
   }
   handleTap(index, e) {
     e.stopPropagation()
-    airconsole.message(0, voteActionCreators.votePlayer(this.props.players[index].deviceId))
-    this.props.votePlayer(this.props.players[index].deviceId)
+    if (this.props.playerLimit - this.props.playerCount !== 0) {
+      airconsole.message(0, voteActionCreators.votePlayer(this.props.players[index].deviceId))
+      this.props.votePlayer(this.props.players[index].deviceId)
+    }
   }
   questReady () {
     console.warn(this)
@@ -60,7 +61,6 @@ export function mapStateToProps(state, props) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    ...playerActionCreators,
     ...voteActionCreators,
   }, dispatch)
 }
