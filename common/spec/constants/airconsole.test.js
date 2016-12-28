@@ -1,5 +1,5 @@
 import AirConsole from 'airconsole-api/airconsole-1.6.0.js'
-import airconsole from 'constants/airconsole'
+import airconsole from 'screen/constants/airconsole'
 import store from 'redux/store'
 import {addPlayer} from 'redux/modules/players'
 

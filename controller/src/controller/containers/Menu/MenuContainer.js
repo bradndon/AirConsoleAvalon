@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
-import {JoinGame, Waiting} from 'components'
+import {JoinGame, Waiting} from 'controller/components'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as playerActionCreators from 'redux/modules/players'
-import airconsole from 'constants/airconsole'
+import airconsole from 'controller/constants/airconsole'
 import './MenuContainer.css'
 
 class MenuContainer extends React.Component {

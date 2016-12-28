@@ -1,5 +1,5 @@
 import React from 'react'
-import {Vote} from 'components'
+import {Vote} from 'controller/components'
 import { connect } from 'react-redux'
 
 class VoteContainer extends React.Component {

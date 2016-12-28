@@ -1,5 +1,5 @@
 import React from 'react'
-import { Waiting } from "components"
+import { Waiting } from "screen/components"
 import { connect } from 'react-redux'
 import { getPlayerNames } from 'redux/modules/players'
 

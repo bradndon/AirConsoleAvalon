@@ -55,7 +55,7 @@ const initialState = [
   {
     players: {},
     quest: {},
-    playerLimit: 0,
+    playerLimit: 4,
   }
 ]
 

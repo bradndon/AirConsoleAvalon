@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { MenuContainer } from 'containers/Menu/MenuContainer'
+import { MenuContainer } from 'screen/containers/Menu/MenuContainer'
 
 function setup (players) {
   const props = {
@@ -18,7 +18,6 @@ describe("Containers", ()=> {
   describe("MenuContainer", ()=> {
     it("should render itself", ()=> {
       const {enzymeWrapper} = setup([])
-      console.log(enzymeWrapper)
       expect(enzymeWrapper.find('Waiting').exists()).toBe(true)
     })
     it("should send the players prop to the Waiting component", ()=> {

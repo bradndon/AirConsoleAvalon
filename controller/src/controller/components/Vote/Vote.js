@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import './Vote.css'
-import { Button } from 'elements'
+import { Button } from 'controller/elements'
 
 const Vote = ({isApproving, approve, reject, names, lastName}) => {
   return (

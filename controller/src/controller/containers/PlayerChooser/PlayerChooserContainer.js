@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
-import {PlayerCard, LeaderQuestInfo} from 'components'
+import {PlayerCard, LeaderQuestInfo} from 'controller/components'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as playerActionCreators from 'redux/modules/players'
 import * as voteActionCreators from 'redux/modules/votes'
-import airconsole from 'constants/airconsole'
+import airconsole from 'controller/constants/airconsole'
 
 export class PlayerChooserContainer extends React.Component {
   componentWillMount() {
@@ -19,7 +19,6 @@ export class PlayerChooserContainer extends React.Component {
     this.context.router.push('/vote')
   }
   render () {
-    console.log(this.props)
     return (
       <div>
         <LeaderQuestInfo
@@ -43,7 +42,9 @@ PlayerChooserContainer.propTypes = {
   players: PropTypes.array.isRequired,
 }
 
-
+PlayerChooserContainer.context = {
+  router: PropTypes.object.isRequired,
+}
 
 function mapStateToProps(state, props) {
   return {

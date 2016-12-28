@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route, hashHistory, IndexRoute } from 'react-router'
 import { MainContainer, MenuContainer, VoteContainer, PlayerChooserContainer }
-  from 'containers'
+  from 'controller/containers'
 
 
 const routes = (

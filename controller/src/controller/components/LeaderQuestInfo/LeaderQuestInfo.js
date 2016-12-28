@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { Button } from 'elements'
+import { Button } from 'controller/elements'
 import './LeaderQuestInfo.css'
 
 const LeaderQuestInfo = ({numLeft, isReady, sendReady}) => {

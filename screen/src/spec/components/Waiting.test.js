@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { Waiting } from 'components'
+import { Waiting } from 'screen/components'
 
 function setup (players) {
   const props = {

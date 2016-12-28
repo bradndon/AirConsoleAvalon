@@ -109,8 +109,8 @@
     "modulePaths": [
       ".",
       "common",
-      "screen/src",
-      "controller/src"
+      "controller/src",
+      "screen/src"
     ]
   },
   "babel": {
