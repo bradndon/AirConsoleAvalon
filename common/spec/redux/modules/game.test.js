@@ -12,6 +12,14 @@ describe("Game", ()=> {
       }
       expect(actions.setState(state)).toEqual(expectedAction)
     })
+    it("should create an action to start the game", ()=> {
+      const deviceId = 1
+      const expectedAction = {
+        type: types.START_GAME,
+        deviceId
+      }
+      expect(actions.startGame(deviceId)).toEqual(expectedAction)
+    })
   })
   describe("Reducer", ()=> {
     it("should return the initial game state", ()=> {
