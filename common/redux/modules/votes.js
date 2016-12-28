@@ -1,4 +1,4 @@
-import { ADD_VOTE, UNVOTE_PLAYER, VOTE_PLAYER, SET_STATE, START_GAME } from 'constants/ActionTypes'
+import { ADD_VOTE, UNVOTE_PLAYER, VOTE_PLAYER, SET_STATE, START_GAME, VOTE_SET_VOTE } from 'constants/ActionTypes'
 import { createSelector } from 'reselect'
 
 export function addVote (quest, leader) {
@@ -23,9 +23,18 @@ export function unvotePlayer (deviceId) {
   }
 }
 
+export function setVote(deviceId, isApproving) {
+  return {
+    type: VOTE_SET_VOTE,
+    deviceId,
+    isApproving
+  }
+}
+
 const initialVoteState = {
   players: {},
   quest: {},
+  votes: {},
 }
 
 function vote(state = initialVoteState, action) {
@@ -37,6 +46,14 @@ function vote(state = initialVoteState, action) {
           ...state.players,
           [action.deviceId]: !state.players[action.deviceId],
         },
+      }
+    case VOTE_SET_VOTE:
+      return {
+        ...state,
+        votes: {
+          ...state.votes,
+          [action.deviceId]: action.isApproving
+        }
       }
     default:
       return state
@@ -54,6 +71,7 @@ export default function votes (state = initialState, action) {
           players: {},
           quest: action.quest,
           leader: action.leader,
+          votes: {},
         },
       ]
     case START_GAME:
@@ -66,6 +84,7 @@ export default function votes (state = initialState, action) {
         },
       ]
     case VOTE_PLAYER:
+    case VOTE_SET_VOTE:
       return [
           ...state.splice(0, state.length-1),
           vote(state[state.length-1], action),

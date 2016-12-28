@@ -3,6 +3,7 @@ export const ADD_ROLE = 'ADD_ROLE'
 export const ADD_VOTE = 'ADD_VOTE'
 export const VOTE_PLAYER = 'VOTE_PLAYER'
 export const UNVOTE_PLAYER = 'UNVOTE_PLAYER'
+export const VOTE_SET_VOTE = 'VOTE_SET_VOTE'
 export const JOIN_GAME = 'JOIN_GAME'
 //Quest Actions
 export const QUEST_ADD_VOTE = 'QUEST_ADD_VOTE'
