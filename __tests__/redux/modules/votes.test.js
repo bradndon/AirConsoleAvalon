@@ -22,6 +22,16 @@ describe("Voting", () => {
       }
       expect(actions.votePlayer(deviceId)).toEqual(expectedAction)
     })
+    it('should create an action to set the vote for a player', ()=> {
+      const deviceId = 1
+      const isApproving = true
+      const expectedAction = {
+        type: types.VOTE_SET_VOTE,
+        deviceId,
+        isApproving,
+      }
+      expect(actions.setVote(deviceId, isApproving)).toEqual(expectedAction)
+    })
   })
 
   describe("Reducer", () => {
@@ -40,6 +50,7 @@ describe("Voting", () => {
           quest: 0,
           players: {},
           leader: 1,
+          votes: {},
         }
       ])
     })
@@ -63,6 +74,7 @@ describe("Voting", () => {
           quest: 1,
           players: {},
           leader: 2,
+          votes: {},
         }
       ])
     })
@@ -133,10 +145,32 @@ describe("Voting", () => {
         }
       ])
     })
+    it("should set the vote for a given player", ()=>{
+      expect(
+        reducer([
+          {
+            quest: 0,
+            votes: {}
+          }
+        ], {
+          type: types.VOTE_SET_VOTE,
+          deviceId: 0,
+          isApproving: false
+        })
+      ).toEqual([
+        {
+          quest: 0,
+          votes: {
+            0: false
+          }
+        }
+      ])
+    })
     it("should set the state to the passed in values", ()=> {
       expect(reducer({}, {type: types.SET_STATE, state: {
         votes: [{0:1}]}})).toEqual([{0:1}])
     })
+
   })
   describe('Selectors', () => {
     describe('currentLimit', () => {
