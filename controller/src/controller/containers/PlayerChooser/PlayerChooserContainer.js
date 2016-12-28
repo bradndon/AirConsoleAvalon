@@ -18,8 +18,7 @@ export class PlayerChooserContainer extends React.Component {
     }
   }
   questReady () {
-    console.warn(this)
-    this.context.router.push('/vote')
+    airconsole.message(0, {type: "ROUTE_CHANGE", route: '/vote'})
   }
   render () {
     return airconsole.getDeviceId() === this.props.vote.leader ? (

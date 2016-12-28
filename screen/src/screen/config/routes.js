@@ -9,6 +9,7 @@ const routes = (
     <Router path="/" component={MainContainer}>
       <IndexRoute component={MenuContainer}/>
       <Route path="/players" component={ChosenContainer}/>
+      <Route path="/vote" component={MenuContainer}/>
     </Router>
   </Router>
 )

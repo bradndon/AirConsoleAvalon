@@ -12,9 +12,6 @@ class MenuContainer extends React.Component {
     super(props)
     this.state = {value: ''}
   }
-  componentDidMount() {
-
-  }
   handleChange(event) {
     this.setState({value: event.target.value})
   }

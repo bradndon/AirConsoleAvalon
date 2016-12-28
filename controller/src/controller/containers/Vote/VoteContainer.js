@@ -1,17 +1,15 @@
 import React from 'react'
 import {Vote} from 'controller/components'
 import { connect } from 'react-redux'
+import airconsole from 'controller/constants/airconsole'
+import * as voteActionCreators from 'redux/modules/votes'
 
 class VoteContainer extends React.Component {
   constructor() {
     super()
     this.state = {
       isApproving: false,
-      names: ['Brandon', 'Geneva', 'Dana', 'Isaac'],
     }
-  }
-  componentDidMount() {
-    console.warn(this.props)
   }
   approve() {
     this.setState({isApproving: true})
@@ -19,24 +17,24 @@ class VoteContainer extends React.Component {
   reject() {
     this.setState({isApproving: false})
   }
+  submitVote() {
+    airconsole.message(0, voteActionCreators.setVote(airconsole.getDeviceId(), this.state.isApproving))
+  }
   render () {
     return (
       <Vote
-        names={this.props.players.map((e)=>e.name).slice(0, this.props.players.length - 1)}
-        lastName={this.props.players.map((e)=>e.name).slice(this.props.players.length - 1)[0]}
+        names={this.props.players.map((e)=>e.name)}
         isApproving={this.state.isApproving}
         approve={()=>this.approve()}
-        reject={()=>this.reject()}/>
+        reject={()=>this.reject()}
+        submitVote={()=>this.submitVote()}/>
     )
   }
 }
 
-function mapStateToProps({players, votes}) {
+function mapStateToProps(state, props) {
   return {
-    players: Object.keys(votes[votes.length-1].players)
-                   .map((e)=>votes[votes.length-1].players[e] === true ? players[e]:null)
-                   .filter((e)=>e),
-    vote: votes[votes.length-1],
+    players: voteActionCreators.getPlayersOnQuest(state, props),
   }
 }
 
