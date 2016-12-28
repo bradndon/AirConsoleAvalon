@@ -1,11 +1,11 @@
-import { ADD_VOTE, UNVOTE_PLAYER, VOTE_PLAYER, SET_STATE } from 'constants/ActionTypes'
+import { ADD_VOTE, UNVOTE_PLAYER, VOTE_PLAYER, SET_STATE, START_GAME } from 'constants/ActionTypes'
 import { createSelector } from 'reselect'
 
-export function addVote (quest, playerLimit) {
+export function addVote (quest, leader) {
   return {
     type: ADD_VOTE,
     quest,
-    playerLimit,
+    leader
   }
 }
 
@@ -26,18 +26,10 @@ export function unvotePlayer (deviceId) {
 const initialVoteState = {
   players: {},
   quest: {},
-  playerLimit: 0,
 }
 
 function vote(state = initialVoteState, action) {
   switch (action.type) {
-    case ADD_VOTE:
-      return {
-        ...state,
-        players: {},
-        quest: action.quest,
-        playerLimit: action.playerLimit,
-      }
     case VOTE_PLAYER:
       return {
         ...state,
@@ -61,7 +53,16 @@ export default function votes (state = initialState, action) {
         {
           players: {},
           quest: action.quest,
-          playerLimit: action.playerLimit,
+          leader: action.leader,
+        },
+      ]
+    case START_GAME:
+      return [
+        ...state,
+        {
+          players: {},
+          quest: 1,
+          leader: action.deviceId
         },
       ]
     case VOTE_PLAYER:
@@ -78,7 +79,13 @@ export default function votes (state = initialState, action) {
   }
 }
 
-export const currentVote = state => state.votes[state.votes.length-1]
+export const currentVote = state => state.votes[state.votes.length-1] || {}
+
+export const currentLimit = createSelector(
+  currentVote,
+  state => state.quests,
+  (vote, quests)=> quests[vote.quest].playerCount
+)
 
 export const getPlayerCount = createSelector(
   currentVote,
@@ -87,6 +94,6 @@ export const getPlayerCount = createSelector(
 
 export const atLimit = createSelector(
   getPlayerCount,
-  currentVote,
-  (count, vote) => vote.playerLimit <= count
+  currentLimit,
+  (count, limit) => limit <= count
 )

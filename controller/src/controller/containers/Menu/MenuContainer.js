@@ -3,6 +3,7 @@ import {JoinGame, Waiting} from 'controller/components'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as playerActionCreators from 'redux/modules/players'
+import * as gameActionCreators from 'redux/modules/game'
 import airconsole from 'controller/constants/airconsole'
 import './MenuContainer.css'
 
@@ -24,6 +25,7 @@ class MenuContainer extends React.Component {
   }
 
   startGame() {
+    airconsole.message(0, gameActionCreators.startGame(airconsole.getDeviceId()))
     console.warn("startGame")
   }
   render () {

@@ -1,9 +1,16 @@
-import { QUEST_FINISH, SET_STATE } from 'constants/ActionTypes'
+import { QUEST_FINISH, SET_STATE, START_GAME } from 'constants/ActionTypes'
 
 export function setState(state) {
   return {
     type: SET_STATE,
     state
+  }
+}
+
+export function startGame(deviceId) {
+  return {
+    type: START_GAME,
+    deviceId,
   }
 }
 

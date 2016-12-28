@@ -6,13 +6,13 @@ describe("Voting", () => {
   describe("Actions", () => {
     it('should create an action to make a new vote', () => {
       const quest = 0
-      const playerLimit = 4
+      const leader = 1
       const expectedAction = {
         type: types.ADD_VOTE,
         quest,
-        playerLimit
+        leader
       }
-      expect(actions.addVote(quest, playerLimit)).toEqual(expectedAction)
+      expect(actions.addVote(quest, leader)).toEqual(expectedAction)
     })
     it('should create an action to vote for a player', () => {
       const deviceId = 0
@@ -33,13 +33,13 @@ describe("Voting", () => {
         reducer([], {
           type: types.ADD_VOTE,
           quest: 0,
-          playerLimit: 4,
+          leader: 1,
         })
       ).toEqual([
         {
           quest: 0,
-          playerLimit: 4,
-          players: {}
+          players: {},
+          leader: 1,
         }
       ])
     })
@@ -48,23 +48,21 @@ describe("Voting", () => {
         reducer([
           {
             quest: 0,
-            playerLimit: 4,
             players: {}
           }
         ], {
           type: types.ADD_VOTE,
           quest: 1,
-          playerLimit: 5,
+          leader: 2,
         })
       ).toEqual([
         {
           quest: 0,
-          playerLimit: 4,
           players: {}
         }, {
           quest: 1,
-          playerLimit: 5,
-          players: {}
+          players: {},
+          leader: 2,
         }
       ])
     })
@@ -73,7 +71,6 @@ describe("Voting", () => {
         reducer([
           {
             quest: 0,
-            playerLimit: 4,
             players: {
               1:true
             }
@@ -85,7 +82,6 @@ describe("Voting", () => {
       ).toEqual([
         {
           quest: 0,
-          playerLimit: 4,
           players: {
             0: true,
             1:true
@@ -98,7 +94,6 @@ describe("Voting", () => {
         reducer([
           {
             quest: 0,
-            playerLimit: 4,
             players: {
               0: false,
             }
@@ -110,7 +105,6 @@ describe("Voting", () => {
       ).toEqual([
         {
           quest: 0,
-          playerLimit: 4,
           players: {
             0: true
           }
@@ -122,7 +116,6 @@ describe("Voting", () => {
         reducer([
           {
             quest: 0,
-            playerLimit: 4,
             players: {
               0: true,
             }
@@ -134,7 +127,6 @@ describe("Voting", () => {
       ).toEqual([
         {
           quest: 0,
-          playerLimit: 4,
           players: {
             0: false
           }
@@ -147,52 +139,81 @@ describe("Voting", () => {
     })
   })
   describe('Selectors', () => {
+    describe('currentLimit', () => {
+      it("should return the limit based on the quest", ()=> {
+        expect(actions.currentLimit({
+          votes:[
+            {
+              quest: 1,
+              players: {
+              }
+            }
+          ],
+          quests: {
+            1: {
+              playerCount: 4
+            }
+          },
+        })).toBe(4)
+      })
+    })
     describe('getPlayerCount', () => {
       it('should return 0 if no players selected in current vote', () => {
         expect(actions.getPlayerCount({
           votes:[
             {
-              quest: 0,
-              playerLimit: 4,
+              quest: 1,
               players: {
               }
             }
-          ]
+          ],
+          quests: {
+            1: {
+              playerCount: 4
+            }
+          },
         })).toEqual(0)
       })
       it('should return 0 if no players are true selected in current vote', () => {
         expect(actions.getPlayerCount({
           votes:[
             {
-              quest: 0,
-              playerLimit: 4,
+              quest: 1,
               players: {
                 0: false,
                 1: false,
               }
             }
-          ]
+          ],
+          quests: {
+            1: {
+              playerCount: 4
+            }
+          },
         })).toEqual(0)
       })
       it('should return 1 if one player is true selected in current vote', () => {
         expect(actions.getPlayerCount({
           votes:[
             {
-              quest: 0,
-              playerLimit: 4,
+              quest: 1,
               players: {
                 1: true,
               }
             }
-          ]
+          ],
+          quests: {
+            1: {
+              playerCount: 4
+            }
+          },
         })).toEqual(1)
       })
       it('should return 3 if three players are true selected in current vote', () => {
         expect(actions.getPlayerCount({
           votes:[
             {
-              quest: 0,
-              playerLimit: 4,
+              quest: 1,
               players: {
                 1: true,
                 2: true,
@@ -200,7 +221,12 @@ describe("Voting", () => {
                 5: false
               }
             }
-          ]
+          ],
+          quests: {
+            1: {
+              playerCount: 4
+            }
+          },
         })).toEqual(3)
       })
     })
@@ -209,8 +235,7 @@ describe("Voting", () => {
         expect(actions.atLimit({
           votes:[
             {
-              quest: 0,
-              playerLimit: 4,
+              quest: 1,
               players: {
                 1: true,
                 2: true,
@@ -218,15 +243,19 @@ describe("Voting", () => {
                 5: false
               }
             }
-          ]
+          ],
+          quests: {
+            1: {
+              playerCount: 4
+            }
+          },
         })).toEqual(false)
       })
       it('should return true if at limit', () => {
         expect(actions.atLimit({
           votes:[
             {
-              quest: 0,
-              playerLimit: 4,
+              quest: 1,
               players: {
                 1: true,
                 2: true,
@@ -234,7 +263,12 @@ describe("Voting", () => {
                 5: true
               }
             }
-          ]
+          ],
+          quests: {
+            1: {
+              playerCount: 4
+            }
+          },
         })).toEqual(true)
       })
     })
