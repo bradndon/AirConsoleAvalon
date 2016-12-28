@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { PlayerChooserContainer, mapStateToProps } from 'controller/containers/PlayerChooser/PlayerChooserContainer'
+import airconsole from 'controller/constants/airconsole'
 
 function setup (players, vote, playerCount, playerLimit) {
   const props = {
@@ -21,18 +22,30 @@ function setup (players, vote, playerCount, playerLimit) {
 
 describe("Containers", ()=> {
   describe("PlayerChooserContainer", ()=> {
-    it("should render itself", ()=> {
+    it("should render itself if the leader", ()=> {
       const {enzymeWrapper} = setup([], {
           players: {},
-          quest: {},
+          quest: 1,
           playerLimit: 4,
+          leader: airconsole.getDeviceId()
         }, 2, 2)
       expect(enzymeWrapper.find('LeaderQuestInfo').exists()).toBe(true)
+    })
+    it("should render itself if not leader", ()=> {
+      const {enzymeWrapper} = setup([{name: "Brandon", deviceId: 77}], {
+          players: {},
+          quest: 1,
+          playerLimit: 4,
+          leader: 77
+        }, 2, 2)
+      expect(enzymeWrapper.find('LeaderQuestInfo').exists()).toBe(false)
+      expect(enzymeWrapper.find('div').text()).toEqual("Brandon is the leader, wait your turn")
     })
     it("should send the right props to the LeaderQuestInfo component", ()=> {
       const { enzymeWrapper} = setup([{name: "Brandon", deviceId: 1}, {name: "Isaac", deviceId: 2}], {
         players: {},
         quest: {},
+        leader: airconsole.getDeviceId()
       }, 1, 4 )
       expect(enzymeWrapper.find('LeaderQuestInfo').props().numLeft).toBe(3)
       expect(enzymeWrapper.find('LeaderQuestInfo').props().isReady).toBe(true)

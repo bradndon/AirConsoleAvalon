@@ -21,7 +21,7 @@ export class PlayerChooserContainer extends React.Component {
     this.context.router.push('/vote')
   }
   render () {
-    return (
+    return airconsole.getDeviceId() === this.props.vote.leader ? (
       <div>
         <LeaderQuestInfo
           numLeft={this.props.playerLimit - this.props.playerCount}
@@ -35,7 +35,8 @@ export class PlayerChooserContainer extends React.Component {
           handleTap={(e) =>this.handleTap(i, e)}/>)}
         <div style={{clear: 'both', paddingTop: '90px'}}/>
       </div>
-    )
+    ) :
+      <div>{this.props.players.map(player => player.deviceId === this.props.vote.leader ? player.name : null)} {"is the leader, wait your turn"}</div>
   }
 }
 
