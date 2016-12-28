@@ -156,5 +156,21 @@ describe("Quests", ()=> {
         questId: 1
       })).toEqual({1: {fail: 1}})
     })
+    it("should set the state to the passed in values", ()=> {
+      expect(reducer({}, {type: types.SET_STATE, state: {
+        quests: {0: 1}}})).toEqual({0: 1})
+    })
+    it("should set the state to the passed in values without affecting other values", ()=> {
+      expect(reducer({
+        hasJoined: true
+      }, {type: types.SET_STATE, state: {
+        quests: {0: 1}}})).toEqual({hasJoined: true, 0: 1})
+    })
+    it("should set the state overwriting current values", ()=> {
+      expect(reducer({
+        hasJoined: true
+      }, {type: types.SET_STATE, state: {
+        quests: {hasJoined: false, 0: 1}}})).toEqual({hasJoined: false, 0: 1})
+    })
   })
 })

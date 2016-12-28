@@ -1,4 +1,4 @@
-import { ADD_PLAYER, ADD_ROLE, JOIN_GAME } from 'constants/ActionTypes'
+import { ADD_PLAYER, ADD_ROLE, JOIN_GAME, SET_STATE } from 'constants/ActionTypes'
 import { createSelector } from 'reselect'
 
 const initialPlayerState = {
@@ -67,6 +67,11 @@ export default function players (state = initialState, action) {
         ...state,
         deviceId: action.deviceId,
         hasJoined: true,
+      }
+    case SET_STATE:
+      return {
+        ...state,
+        ...action.state.players,
       }
     default:
       return state

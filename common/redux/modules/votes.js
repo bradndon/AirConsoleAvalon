@@ -1,4 +1,4 @@
-import { ADD_VOTE, UNVOTE_PLAYER, VOTE_PLAYER } from 'constants/ActionTypes'
+import { ADD_VOTE, UNVOTE_PLAYER, VOTE_PLAYER, SET_STATE } from 'constants/ActionTypes'
 import { createSelector } from 'reselect'
 
 export function addVote (quest, playerLimit) {
@@ -69,6 +69,11 @@ export default function votes (state = initialState, action) {
           ...state.splice(0, state.length-1),
           vote(state[state.length-1], action),
         ]
+    case SET_STATE:
+      return {
+        ...state,
+        ...action.state.votes,
+      }
     default:
       return state
   }

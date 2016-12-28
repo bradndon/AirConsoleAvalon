@@ -1,7 +1,7 @@
 import { QUEST_ADD_VOTE, QUEST_SET_VOTE,
   QUEST_FINISH,
   QUEST_ADD_SUCCESS,
-  QUEST_ADD_FAIL, START_GAME } from 'constants/ActionTypes'
+  QUEST_ADD_FAIL, START_GAME, SET_STATE } from 'constants/ActionTypes'
 import questConfig from 'constants/questConfig'
 
 export function questAddVote(questId, voteId) {
@@ -89,6 +89,11 @@ export default function quests(state=initialState, action) {
     switch(action.type) {
       case START_GAME:
         return questConfig[action.playerCount]
+      case SET_STATE:
+        return {
+          ...state,
+          ...action.state.quests,
+          }
       default:
         return state
     }
