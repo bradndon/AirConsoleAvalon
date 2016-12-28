@@ -10,6 +10,7 @@ airconsole.onMessage = function(device_id, action) {
   airconsole.broadcast(setState(store.getState()))
   if (action.route) {
     airconsole.broadcast(push(action.route))
+    store.dispatch(push(action.route))
   }
 }
 
