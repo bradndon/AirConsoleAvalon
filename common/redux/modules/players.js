@@ -18,7 +18,7 @@ export function addPlayer(name, deviceId) {
 export function joinGame(deviceId) {
   return {
     type: JOIN_GAME,
-    deviceId
+    deviceId,
   }
 }
 
@@ -26,7 +26,7 @@ export function addRole(role, deviceId) {
   return {
     type: ADD_ROLE,
     role,
-    deviceId
+    deviceId,
   }
 }
 

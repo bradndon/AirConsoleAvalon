@@ -13,7 +13,7 @@ export class MenuContainer extends React.Component {
 
 function mapStateToProps(state, props) {
   return {
-    players: getPlayerNames(state, props)
+    players: getPlayerNames(state, props),
   }
 }
 

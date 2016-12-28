@@ -4,32 +4,32 @@ function createQuests(playerCounts) {
       playerCount: playerCounts[0],
       votes: {},
       success: 0,
-      fail: 0
+      fail: 0,
     },
     2: {
       playerCount: playerCounts[1],
       votes: {},
       success: 0,
-      fail: 0
+      fail: 0,
     },
     3: {
       playerCount: playerCounts[2],
       votes: {},
       success: 0,
-      fail: 0
+      fail: 0,
     },
     4: {
       playerCount: playerCounts[3],
       votes: {},
       success: 0,
-      fail: 0
+      fail: 0,
     },
     5: {
       playerCount: playerCounts[4],
       votes: {},
       success: 0,
-      fail: 0
-    }
+      fail: 0,
+    },
   }
 }
 

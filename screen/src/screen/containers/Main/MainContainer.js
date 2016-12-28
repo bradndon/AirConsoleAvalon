@@ -19,8 +19,7 @@ class MainContainer extends React.Component {
   render () {
     return (
       <div className={"container"}>
-        <div className={"navbar"}>
-        </div>
+        <div className={"navbar"}/>
         <div className={"innerContainer"}>
           <Container>
             {this.props.children}
@@ -31,4 +30,4 @@ class MainContainer extends React.Component {
   }
 }
 
-export default MainContainer;
+export default MainContainer

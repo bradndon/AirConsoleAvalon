@@ -54,7 +54,7 @@ export function mapStateToProps(state, props) {
     players: Object.keys(state.players).map((e)=>typeof state.players[e] === 'object'? state.players[e]:null).filter((e)=>e),
     playerLimit: voteActionCreators.currentLimit(state, props),
     vote: voteActionCreators.currentVote(state, props),
-    playerCount: voteActionCreators.getPlayerCount(state, props)
+    playerCount: voteActionCreators.getPlayerCount(state, props),
   }
 }
 

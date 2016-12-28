@@ -10,7 +10,7 @@ function setup (players, vote, playerCount, playerLimit) {
     playerCount,
     playerLimit,
   }
-  const context = { router: { isActive: (a, b) => true } };
+  const context = { router: { isActive: (a, b) => true } }
   const enzymeWrapper = shallow(<PlayerChooserContainer {...props}/>, {context})
 
   return {
@@ -27,7 +27,7 @@ describe("Containers", ()=> {
           players: {},
           quest: 1,
           playerLimit: 4,
-          leader: airconsole.getDeviceId()
+          leader: airconsole.getDeviceId(),
         }, 2, 2)
       expect(enzymeWrapper.find('LeaderQuestInfo').exists()).toBe(true)
     })
@@ -36,7 +36,7 @@ describe("Containers", ()=> {
           players: {},
           quest: 1,
           playerLimit: 4,
-          leader: 77
+          leader: 77,
         }, 2, 2)
       expect(enzymeWrapper.find('LeaderQuestInfo').exists()).toBe(false)
       expect(enzymeWrapper.find('div').text()).toEqual("Brandon is the leader, wait your turn")
@@ -45,7 +45,7 @@ describe("Containers", ()=> {
       const { enzymeWrapper} = setup([{name: "Brandon", deviceId: 1}, {name: "Isaac", deviceId: 2}], {
         players: {},
         quest: {},
-        leader: airconsole.getDeviceId()
+        leader: airconsole.getDeviceId(),
       }, 1, 4 )
       expect(enzymeWrapper.find('LeaderQuestInfo').props().numLeft).toBe(3)
       expect(enzymeWrapper.find('LeaderQuestInfo').props().isReady).toBe(true)
@@ -65,19 +65,19 @@ describe("Containers", ()=> {
               '1': {
                 deviceId: 1,
                 name: 'Brandon',
-                role: ''
-              }
+                role: '',
+              },
             },
             votes: [
               {
                 players: {1: true},
                 quest: 1,
-              }
+              },
             ],
             quests: {1: {playerCount: 0}},
             game: {
-              currentQuest: 1
-            }
+              currentQuest: 1,
+            },
           }, {})).toEqual(
             {
               players: [{deviceId: 1, name: 'Brandon', role: ''}],
@@ -86,7 +86,7 @@ describe("Containers", ()=> {
                 quest: 1,
               },
               playerLimit: 0,
-              playerCount: 1
+              playerCount: 1,
             })
       })
     })

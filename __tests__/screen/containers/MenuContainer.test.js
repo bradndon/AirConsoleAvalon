@@ -4,13 +4,13 @@ import { MenuContainer } from 'screen/containers/Menu/MenuContainer'
 
 function setup (players) {
   const props = {
-    players
+    players,
   }
   const enzymeWrapper = shallow(<MenuContainer {...props}/>)
 
   return {
     props,
-    enzymeWrapper
+    enzymeWrapper,
   }
 }
 

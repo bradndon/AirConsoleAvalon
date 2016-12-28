@@ -14,10 +14,10 @@ const Overlay = styled.div`
 `
 
 const Waiting = ({players}) => {
-  const GameReady = players.length >= 5 && players.length <= 10 ? <h3>Ready to start!</h3> : null
+  const GameReady = players.length >= 5 && players.length <= 10 ? <h3>{'Ready to start!'}</h3> : null
   return (
       <Overlay>
-        <h2>Players joined:</h2>
+        <h2>{'Players joined:'}</h2>
         {players.map((player, index)=><p key={index}>{player}</p>)}
         {GameReady}
       </Overlay>
@@ -25,7 +25,7 @@ const Waiting = ({players}) => {
 }
 
 Waiting.propTypes = {
-  players: PropTypes.array.isRequired
+  players: PropTypes.array.isRequired,
 }
 
 export default Waiting

@@ -42,7 +42,7 @@ class MenuContainer extends React.Component {
 
 MenuContainer.propTypes = {
   hasJoined: PropTypes.bool.isRequired,
-  joinGame: PropTypes.func.isRequired
+  joinGame: PropTypes.func.isRequired,
 }
 
 MenuContainer.contextTypes = {

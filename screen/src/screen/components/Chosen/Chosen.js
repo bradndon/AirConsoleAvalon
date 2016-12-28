@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react'
 import styled from 'styled-components'
 
 const Section = styled.section`
@@ -13,12 +13,12 @@ const Chosen = ({text, players}) => {
         return (<p key={i}>{player.name}</p>)
       })}
     </Section>
-  );
+  )
 }
 
 Chosen.propTypes = {
   text: PropTypes.string.isRequired,
-  players: PropTypes.array.isRequired
+  players: PropTypes.array.isRequired,
 }
 
 export default Chosen

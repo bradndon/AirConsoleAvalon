@@ -10,7 +10,7 @@ describe("Quests", ()=> {
       const expectedAction = {
         type: types.QUEST_ADD_VOTE,
         questId,
-        voteId
+        voteId,
       }
       expect(actions.questAddVote(questId, voteId)).toEqual(expectedAction)
     })
@@ -20,7 +20,7 @@ describe("Quests", ()=> {
       const expectedAction = {
         type: types.QUEST_SET_VOTE,
         questId,
-        voteId
+        voteId,
       }
       expect(actions.questSetVote(questId, voteId)).toEqual(expectedAction)
     })
@@ -30,7 +30,7 @@ describe("Quests", ()=> {
       const expectedAction = {
         type: types.QUEST_FINISH,
         questId,
-        hasSucceeded
+        hasSucceeded,
       }
       expect(actions.questFinish(questId, hasSucceeded)).toEqual(expectedAction)
     })
@@ -38,7 +38,7 @@ describe("Quests", ()=> {
       const questId = 1
       const expectedAction = {
         type: types.QUEST_ADD_SUCCESS,
-        questId
+        questId,
       }
       expect(actions.questAddSuccess(questId)).toEqual(expectedAction)
     })
@@ -46,7 +46,7 @@ describe("Quests", ()=> {
       const questId = 1
       const expectedAction = {
         type: types.QUEST_ADD_FAIL,
-        questId
+        questId,
       }
       expect(actions.questAddFail(questId)).toEqual(expectedAction)
     })
@@ -58,66 +58,66 @@ describe("Quests", ()=> {
     it("should start the game with the right number of players", ()=> {
       expect(reducer({},{
         type: types.START_GAME,
-        playerCount: 5
+        playerCount: 5,
       })).toEqual({
         1: {
           playerCount: 2,
           votes: {},
           success: 0,
-          fail: 0
+          fail: 0,
         },
         2: {
           playerCount: 2,
           votes: {},
           success: 0,
-          fail: 0
+          fail: 0,
         },
         3: {
           playerCount: 3,
           votes: {},
           success: 0,
-          fail: 0
+          fail: 0,
         },
         4: {
           playerCount: 2,
           votes: {},
           success: 0,
-          fail: 0
+          fail: 0,
         },
         5: {
           playerCount: 3,
           votes: {},
           success: 0,
-          fail: 0
-        }
+          fail: 0,
+        },
       })
     })
     it("should add a vote id to a quest", ()=> {
       expect(reducer({
         1: {
-          votes: {}
-        }
+          votes: {},
+        },
       }, {
         type: types.QUEST_ADD_VOTE,
         questId: 1,
-        voteId: 1
+        voteId: 1,
       })).toEqual({
         1: {
-          votes: {1: true}
-        }
+          votes: {1: true},
+        },
       })
     })
     it("should set a vote to the official vote", () => {
       expect(reducer({
-        1: {}
+        1: {},
       }, {
         type: types.QUEST_SET_VOTE,
         voteId: 1,
-        questId: 1
+        questId: 1,
       })).toEqual({
         1: {
           finalVote: 1,
-        }
+        },
       })
     })
     it("should finish a successful quest", () => {
@@ -125,11 +125,11 @@ describe("Quests", ()=> {
       {
         type: types.QUEST_FINISH,
         questId: 1,
-        hasSucceeded: true
+        hasSucceeded: true,
       })).toEqual({
         1: {
-          hasSucceeded: true
-        }
+          hasSucceeded: true,
+        },
       })
     })
     it("should finish a failed quest", () => {
@@ -137,23 +137,23 @@ describe("Quests", ()=> {
       {
         type: types.QUEST_FINISH,
         questId: 1,
-        hasSucceeded: false
+        hasSucceeded: false,
       })).toEqual({
         1: {
-          hasSucceeded: false
-        }
+          hasSucceeded: false,
+        },
       })
     })
     it("should add a success to the want pile", ()=> {
       expect(reducer({1: {success: 0}}, {
         type: types.QUEST_ADD_SUCCESS,
-        questId: 1
+        questId: 1,
       })).toEqual({1: {success: 1}})
     })
     it("should add a fail to the want pile", ()=> {
       expect(reducer({1: {fail: 0}}, {
         type: types.QUEST_ADD_FAIL,
-        questId: 1
+        questId: 1,
       })).toEqual({1: {fail: 1}})
     })
     it("should set the state to the passed in values", ()=> {
@@ -162,13 +162,13 @@ describe("Quests", ()=> {
     })
     it("should set the state to the passed in values without affecting other values", ()=> {
       expect(reducer({
-        hasJoined: true
+        hasJoined: true,
       }, {type: types.SET_STATE, state: {
         quests: {0: 1}}})).toEqual({hasJoined: true, 0: 1})
     })
     it("should set the state overwriting current values", ()=> {
       expect(reducer({
-        hasJoined: true
+        hasJoined: true,
       }, {type: types.SET_STATE, state: {
         quests: {hasJoined: false, 0: 1}}})).toEqual({hasJoined: false, 0: 1})
     })

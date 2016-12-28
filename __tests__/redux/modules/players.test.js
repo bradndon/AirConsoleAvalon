@@ -20,7 +20,7 @@ describe('Players', ()=> {
       const expectedAction = {
         type: types.ADD_ROLE,
         role,
-        deviceId
+        deviceId,
       }
       expect(actions.addRole(role, deviceId)).toEqual(expectedAction)
     })
@@ -28,7 +28,7 @@ describe('Players', ()=> {
       const deviceId = 1
       const expectedAction = {
         type: types.JOIN_GAME,
-        deviceId
+        deviceId,
       }
       expect(actions.joinGame(deviceId)).toEqual(expectedAction)
     })
@@ -47,8 +47,7 @@ describe('Players', ()=> {
           role: '',
           name: "Brandon",
           deviceId: 0,
-
-        }
+        },
       })
     })
     it('should add another player', ()=> {
@@ -58,7 +57,7 @@ describe('Players', ()=> {
           name: "Brandon",
           deviceId: 0,
 
-        }
+        },
       }, {
         type: types.ADD_PLAYER,
         name: "Isaac",
@@ -75,7 +74,7 @@ describe('Players', ()=> {
           name: "Isaac",
           deviceId: 1,
 
-        }
+        },
       })
     })
     it('should add a role to a player', ()=> {
@@ -86,7 +85,7 @@ describe('Players', ()=> {
             name: "Brandon",
             deviceId: 0,
 
-          }
+          },
         },
         {
           type: types.ADD_ROLE,
@@ -99,7 +98,7 @@ describe('Players', ()=> {
             role: 'Good Guy',
             name: "Brandon",
             deviceId: 0,
-          }
+          },
         }
       )
     })
@@ -107,11 +106,11 @@ describe('Players', ()=> {
       expect(
         reducer({},{
           type: types.JOIN_GAME,
-          deviceId: 1
+          deviceId: 1,
         })
       ).toEqual({
           hasJoined:true,
-          deviceId: 1
+          deviceId: 1,
       })
     })
     it("should set the state to the passed in values", ()=> {
@@ -120,13 +119,13 @@ describe('Players', ()=> {
     })
     it("should set the state to the passed in values without affecting other values", ()=> {
       expect(reducer({
-        hasJoined: true
+        hasJoined: true,
       }, {type: types.SET_STATE, state: {
         players: {0: 1}}})).toEqual({hasJoined: true, 0: 1})
     })
     it("should set the state overwriting current values", ()=> {
       expect(reducer({
-        hasJoined: true
+        hasJoined: true,
       }, {type: types.SET_STATE, state: {
         players: {hasJoined: false, 0: 1}}})).toEqual({hasJoined: false, 0: 1})
     })
@@ -140,15 +139,15 @@ describe('Players', ()=> {
         expect(actions.getPlayerNames({
           players:{
             0: {
-              name: "Brandon"
+              name: "Brandon",
             },
             1: {
-              name: "Isaac"
+              name: "Isaac",
             },
             2: {
-              name: "Jacob"
-            }
-          }
+              name: "Jacob",
+            },
+          },
         })).toEqual(["Brandon", "Isaac", "Jacob"])
       })
     })

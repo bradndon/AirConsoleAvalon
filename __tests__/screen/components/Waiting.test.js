@@ -4,13 +4,13 @@ import { Waiting } from 'screen/components'
 
 function setup (players) {
   const props = {
-    players
+    players,
   }
   const enzymeWrapper = mount(<Waiting {...props}/>)
 
   return {
     props,
-    enzymeWrapper
+    enzymeWrapper,
   }
 }
 
@@ -24,8 +24,8 @@ describe("components", ()=> {
     })
     it("should render the list of names", ()=> {
       const {enzymeWrapper} = setup(["bran", "gen"])
-      expect(enzymeWrapper.find('p').at(0).text()).toBe('bran');
-      expect(enzymeWrapper.find('p').at(1).text()).toBe('gen');
+      expect(enzymeWrapper.find('p').at(0).text()).toBe('bran')
+      expect(enzymeWrapper.find('p').at(1).text()).toBe('gen')
     })
     it("should render a game ready reminder if there are just enough players", ()=> {
       const {enzymeWrapper} = setup(["bran", "gen", "isaac", "kenz", "kirst"])

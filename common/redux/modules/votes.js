@@ -5,7 +5,7 @@ export function addVote (quest, leader) {
   return {
     type: ADD_VOTE,
     quest,
-    leader
+    leader,
   }
 }
 
@@ -52,8 +52,8 @@ function vote(state = initialVoteState, action) {
         ...state,
         votes: {
           ...state.votes,
-          [action.deviceId]: action.isApproving
-        }
+          [action.deviceId]: action.isApproving,
+        },
       }
     default:
       return state
@@ -80,7 +80,7 @@ export default function votes (state = initialState, action) {
         {
           players: {},
           quest: 1,
-          leader: action.deviceId
+          leader: action.deviceId,
         },
       ]
     case VOTE_PLAYER:

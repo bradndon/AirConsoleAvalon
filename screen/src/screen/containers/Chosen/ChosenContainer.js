@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
 import { Chosen } from 'screen/components'
 import styled from "styled-components"
@@ -25,19 +25,19 @@ class ChosenContainer extends React.Component {
       <Overlay>
         <Chosen players={this.props.playersOffQuest} text={"Players not going"}/>
         <Chosen players={this.props.playersOnQuest} text={"Players going on quest"}/>
-      </Overlay>);
+      </Overlay>)
   }
 }
 
 ChosenContainer.propTypes = {
-  vote: PropTypes.object.isRequired
-};
+  vote: PropTypes.object.isRequired,
+}
 
 function mapStateToProps(state, props) {
   return {
     vote: voteSelectors.currentVote(state, props),
     playersOnQuest: voteSelectors.getPlayersOnQuest(state, props),
-    playersOffQuest: voteSelectors.getPlayersOffQuest(state, props)
+    playersOffQuest: voteSelectors.getPlayersOffQuest(state, props),
   }
 }
 

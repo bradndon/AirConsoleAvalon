@@ -3,7 +3,7 @@ import { QUEST_FINISH, SET_STATE, START_GAME } from 'constants/ActionTypes'
 export function setState(state) {
   return {
     type: SET_STATE,
-    state
+    state,
   }
 }
 
@@ -12,7 +12,7 @@ export function startGame(deviceId, playerCount) {
     type: START_GAME,
     deviceId,
     playerCount,
-    route: '/players'
+    route: '/players',
   }
 }
 
@@ -21,7 +21,7 @@ export default function game(state={currentQuest:1}, action) {
     case QUEST_FINISH:
       return {
         ...state,
-        currentQuest: state.currentQuest + 1
+        currentQuest: state.currentQuest + 1,
       }
     case SET_STATE:
       return {

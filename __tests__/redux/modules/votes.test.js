@@ -10,7 +10,7 @@ describe("Voting", () => {
       const expectedAction = {
         type: types.ADD_VOTE,
         quest,
-        leader
+        leader,
       }
       expect(actions.addVote(quest, leader)).toEqual(expectedAction)
     })
@@ -18,7 +18,7 @@ describe("Voting", () => {
       const deviceId = 0
       const expectedAction = {
         type: types.VOTE_PLAYER,
-        deviceId
+        deviceId,
       }
       expect(actions.votePlayer(deviceId)).toEqual(expectedAction)
     })
@@ -51,7 +51,7 @@ describe("Voting", () => {
           players: {},
           leader: 1,
           votes: {},
-        }
+        },
       ])
     })
     it('should add a second vote', () => {
@@ -59,8 +59,8 @@ describe("Voting", () => {
         reducer([
           {
             quest: 0,
-            players: {}
-          }
+            players: {},
+          },
         ], {
           type: types.ADD_VOTE,
           quest: 1,
@@ -69,13 +69,13 @@ describe("Voting", () => {
       ).toEqual([
         {
           quest: 0,
-          players: {}
+          players: {},
         }, {
           quest: 1,
           players: {},
           leader: 2,
           votes: {},
-        }
+        },
       ])
     })
     it('should vote for a new player', () => {
@@ -84,21 +84,21 @@ describe("Voting", () => {
           {
             quest: 0,
             players: {
-              1:true
-            }
-          }
+              1:true,
+            },
+          },
         ], {
           type: types.VOTE_PLAYER,
-          deviceId: 0
+          deviceId: 0,
         })
       ).toEqual([
         {
           quest: 0,
           players: {
             0: true,
-            1:true
-          }
-        }
+            1:true,
+          },
+        },
       ])
     })
     it('should vote for a player that has been chosen before', () => {
@@ -108,19 +108,19 @@ describe("Voting", () => {
             quest: 0,
             players: {
               0: false,
-            }
-          }
+            },
+          },
         ], {
           type: types.VOTE_PLAYER,
-          deviceId: 0
+          deviceId: 0,
         })
       ).toEqual([
         {
           quest: 0,
           players: {
-            0: true
-          }
-        }
+            0: true,
+          },
+        },
       ])
     })
     it('should unvote for a player', () => {
@@ -130,19 +130,19 @@ describe("Voting", () => {
             quest: 0,
             players: {
               0: true,
-            }
-          }
+            },
+          },
         ], {
           type: types.VOTE_PLAYER,
-          deviceId: 0
+          deviceId: 0,
         })
       ).toEqual([
         {
           quest: 0,
           players: {
-            0: false
-          }
-        }
+            0: false,
+          },
+        },
       ])
     })
     it("should set the vote for a given player", ()=>{
@@ -150,20 +150,20 @@ describe("Voting", () => {
         reducer([
           {
             quest: 0,
-            votes: {}
-          }
+            votes: {},
+          },
         ], {
           type: types.VOTE_SET_VOTE,
           deviceId: 0,
-          isApproving: false
+          isApproving: false,
         })
       ).toEqual([
         {
           quest: 0,
           votes: {
-            0: false
-          }
-        }
+            0: false,
+          },
+        },
       ])
     })
     it("should set the state to the passed in values", ()=> {
@@ -180,13 +180,13 @@ describe("Voting", () => {
             {
               quest: 1,
               players: {
-              }
-            }
+              },
+            },
           ],
           quests: {
             1: {
-              playerCount: 4
-            }
+              playerCount: 4,
+            },
           },
         })).toBe(4)
       })
@@ -197,14 +197,13 @@ describe("Voting", () => {
           votes:[
             {
               quest: 1,
-              players: {
-              }
-            }
+              players: {},
+            },
           ],
           quests: {
             1: {
-              playerCount: 4
-            }
+              playerCount: 4,
+            },
           },
         })).toEqual(0)
       })
@@ -216,13 +215,13 @@ describe("Voting", () => {
               players: {
                 0: false,
                 1: false,
-              }
-            }
+              },
+            },
           ],
           quests: {
             1: {
-              playerCount: 4
-            }
+              playerCount: 4,
+            },
           },
         })).toEqual(0)
       })
@@ -233,13 +232,13 @@ describe("Voting", () => {
               quest: 1,
               players: {
                 1: true,
-              }
-            }
+              },
+            },
           ],
           quests: {
             1: {
-              playerCount: 4
-            }
+              playerCount: 4,
+            },
           },
         })).toEqual(1)
       })
@@ -252,14 +251,14 @@ describe("Voting", () => {
                 1: true,
                 2: true,
                 3: true,
-                5: false
-              }
-            }
+                5: false,
+              },
+            },
           ],
           quests: {
             1: {
-              playerCount: 4
-            }
+              playerCount: 4,
+            },
           },
         })).toEqual(3)
       })
@@ -273,16 +272,16 @@ describe("Voting", () => {
                 1: true,
                 2: true,
                 3: true,
-                5: false
-              }
-            }
+                5: false,
+              },
+            },
           ],
           players: {
             1: 1,
             2: 2,
             3: 3,
             5: 5,
-          }
+          },
         })).toEqual([1,2,3])
       })
     })
@@ -295,9 +294,9 @@ describe("Voting", () => {
                 1: true,
                 2: true,
                 3: true,
-                5: false
-              }
-            }
+                5: false,
+              },
+            },
           ],
           players: {
             hasJoined: true,
@@ -306,7 +305,7 @@ describe("Voting", () => {
             3: {3: 3},
             5: {5: 5},
             6: {6: 6},
-          }
+          },
         })).toEqual([{5: 5}, {6: 6}])
       })
     })
@@ -320,14 +319,14 @@ describe("Voting", () => {
                 1: true,
                 2: true,
                 3: true,
-                5: false
-              }
-            }
+                5: false,
+              },
+            },
           ],
           quests: {
             1: {
-              playerCount: 4
-            }
+              playerCount: 4,
+            },
           },
         })).toEqual(false)
       })
@@ -340,14 +339,14 @@ describe("Voting", () => {
                 1: true,
                 2: true,
                 3: true,
-                5: true
-              }
-            }
+                5: true,
+              },
+            },
           ],
           quests: {
             1: {
-              playerCount: 4
-            }
+              playerCount: 4,
+            },
           },
         })).toEqual(true)
       })

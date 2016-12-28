@@ -8,7 +8,7 @@ export function questAddVote(questId, voteId) {
   return {
     type: QUEST_ADD_VOTE,
     questId,
-    voteId
+    voteId,
   }
 }
 
@@ -16,7 +16,7 @@ export function questSetVote(questId, voteId) {
   return {
     type: QUEST_SET_VOTE,
     questId,
-    voteId
+    voteId,
   }
 }
 
@@ -24,21 +24,21 @@ export function questFinish(questId, hasSucceeded) {
   return {
     type: QUEST_FINISH,
     questId,
-    hasSucceeded
+    hasSucceeded,
   }
 }
 
 export function questAddSuccess(questId) {
   return {
     type: QUEST_ADD_SUCCESS,
-    questId
+    questId,
   }
 }
 
 export function questAddFail(questId) {
   return {
     type: QUEST_ADD_FAIL,
-    questId
+    questId,
   }
 }
 
@@ -51,28 +51,28 @@ function quest(state={}, action) {
         ...state,
         votes: {
           ...state.votes,
-          [action.voteId]: true
-        }
+          [action.voteId]: true,
+        },
       }
     case QUEST_SET_VOTE:
       return {
         ...state,
-        finalVote: action.voteId
+        finalVote: action.voteId,
       }
     case QUEST_FINISH:
       return {
         ...state,
-        hasSucceeded: action.hasSucceeded
+        hasSucceeded: action.hasSucceeded,
       }
     case QUEST_ADD_SUCCESS:
       return {
         ...state,
-        success: state.success + 1
+        success: state.success + 1,
       }
     case QUEST_ADD_FAIL:
       return {
         ...state,
-        fail: state.fail + 1
+        fail: state.fail + 1,
       }
     default:
       return state
@@ -83,7 +83,7 @@ export default function quests(state=initialState, action) {
   if (action.questId !== undefined) {
     return {
       ...state,
-      [action.questId]: quest(state[action.questId], action)
+      [action.questId]: quest(state[action.questId], action),
     }
   } else {
     switch(action.type) {
