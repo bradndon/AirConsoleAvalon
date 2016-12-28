@@ -230,6 +230,52 @@ describe("Voting", () => {
         })).toEqual(3)
       })
     })
+    describe('getPlayersOnQuest', ()=> {
+      it("should return the players on the quest", ()=> {
+        expect(actions.getPlayersOnQuest({
+          votes:[
+            {
+              players: {
+                1: true,
+                2: true,
+                3: true,
+                5: false
+              }
+            }
+          ],
+          players: {
+            1: 1,
+            2: 2,
+            3: 3,
+            5: 5,
+          }
+        })).toEqual([1,2,3])
+      })
+    })
+    describe('getPlayersOffQuest', ()=> {
+      it("should return the players off the quest", ()=> {
+        expect(actions.getPlayersOffQuest({
+          votes:[
+            {
+              players: {
+                1: true,
+                2: true,
+                3: true,
+                5: false
+              }
+            }
+          ],
+          players: {
+            hasJoined: true,
+            1: {1: 1},
+            2: {2: 2},
+            3: {3: 3},
+            5: {5: 5},
+            6: {6: 6},
+          }
+        })).toEqual([{5: 5}, {6: 6}])
+      })
+    })
     describe('atLimit', () => {
       it('should return false if below limit', () => {
         expect(actions.atLimit({

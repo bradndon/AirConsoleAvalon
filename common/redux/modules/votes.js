@@ -92,6 +92,18 @@ export const getPlayerCount = createSelector(
   vote => Object.keys(vote.players).reduce((a,b)=> vote.players[b] === true ? a+1 : a, 0)
 )
 
+export const getPlayersOnQuest = createSelector(
+  currentVote,
+  state => state.players,
+  (vote, players) => Object.keys(vote.players).filter((a)=> vote.players[a] === true).map(e=>players[e])
+)
+
+export const getPlayersOffQuest = createSelector(
+  currentVote,
+  state => state.players,
+  (vote, players) => Object.keys(players).filter((e)=>typeof players[e] === 'object').filter((a)=> vote.players[a] !== true).map(e=>players[e])
+)
+
 export const atLimit = createSelector(
   getPlayerCount,
   currentLimit,
