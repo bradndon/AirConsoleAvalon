@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import store from 'redux/store'
 import airconsole from 'constants/airconsole'
 
-console.warn("Version 0.0.2")
+console.warn("Version 0.0.3")
 ReactDOM.render(
   <Provider store={store}>
     {routes}

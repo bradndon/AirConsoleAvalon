@@ -18,6 +18,7 @@ describe("Containers", ()=> {
   describe("MenuContainer", ()=> {
     it("should render itself", ()=> {
       const {enzymeWrapper} = setup([])
+      console.log(enzymeWrapper)
       expect(enzymeWrapper.find('Waiting').exists()).toBe(true)
     })
     it("should send the players prop to the Waiting component", ()=> {

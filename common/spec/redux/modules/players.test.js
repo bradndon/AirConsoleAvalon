@@ -30,11 +30,12 @@ describe('Players', ()=> {
         type: types.JOIN_GAME,
         deviceId
       }
+      expect(actions.joinGame(deviceId)).toEqual(expectedAction)
     })
   })
   describe('Reducer', () => {
     it('should return the initial state', ()=> {
-      expect(reducer(undefined, {})).toEqual({})
+      expect(reducer(undefined, {})).toEqual({hasJoined: false})
     })
     it('should add a first player', ()=> {
       expect(reducer({}, {

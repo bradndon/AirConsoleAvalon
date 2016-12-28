@@ -51,7 +51,13 @@ function vote(state = initialVoteState, action) {
   }
 }
 
-const initialState = []
+const initialState = [
+  {
+    players: {},
+    quest: {},
+    playerLimit: 0,
+  }
+]
 
 export default function votes (state = initialState, action) {
   switch (action.type) {
@@ -79,7 +85,7 @@ export default function votes (state = initialState, action) {
   }
 }
 
-const currentVote = state => state.votes[state.votes.length-1]
+export const currentVote = state => state.votes[state.votes.length-1]
 
 export const getPlayerCount = createSelector(
   currentVote,

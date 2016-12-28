@@ -4,28 +4,27 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as playerActionCreators from 'redux/modules/players'
 import * as voteActionCreators from 'redux/modules/votes'
+import airconsole from 'constants/airconsole'
 
-class PlayerChooserContainer extends React.Component {
+export class PlayerChooserContainer extends React.Component {
   componentWillMount() {
     // TODO: move to before this component opens
-    this.props.addVote({}, 2)
+    // airconsole.message(0, voteActionCreators.addVote({}, 2))
   }
   handleTap(index, e) {
     e.stopPropagation()
-    this.props.voteOrUnvotePlayer(this.props.players[index].deviceId)
   }
   questReady () {
     console.warn('Ready for quest')
     this.context.router.push('/vote')
   }
   render () {
-    var currentCount = Object.keys(this.props.vote.players)
-      .reduce((a,b)=> this.props.vote.players[b] === true ? a+1 : a, 0)
+    console.log(this.props)
     return (
       <div>
         <LeaderQuestInfo
-          numLeft={this.props.vote.playerLimit - currentCount}
-          isReady={this.props.vote.playerLimit - currentCount !== 0}
+          numLeft={this.props.vote.playerLimit - this.props.playerCount}
+          isReady={this.props.vote.playerLimit - this.props.playerCount !== 0}
           sendReady={()=>this.questReady()}/>
 
         {this.props.players.map((player, i)=><PlayerCard
@@ -42,17 +41,15 @@ class PlayerChooserContainer extends React.Component {
 PlayerChooserContainer.propTypes = {
   vote: PropTypes.object.isRequired,
   players: PropTypes.array.isRequired,
-  voteOrUnvotePlayer: PropTypes.func.isRequired,
 }
 
-PlayerChooserContainer.contextTypes = {
-  router: PropTypes.object.isRequired,
-}
 
-function mapStateToProps({players, votes}) {
+
+function mapStateToProps(state, props) {
   return {
-    players: Object.keys(players).map((e)=>typeof players[e] === 'object'? players[e]:null).filter((e)=>e),
-    vote: votes[votes.length-1],
+    players: Object.keys(state.players).map((e)=>typeof state.players[e] === 'object'? state.players[e]:null).filter((e)=>e),
+    vote: voteActionCreators.currentVote(state, props),
+    playerCount: voteActionCreators.getPlayerCount(state, props)
   }
 }
 

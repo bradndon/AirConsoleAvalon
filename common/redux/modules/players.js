@@ -48,7 +48,7 @@ function player ( state=initialPlayerState, action) {
   }
 }
 
-const initialState = {}
+const initialState = {hasJoined: false}
 
 export default function players (state = initialState, action) {
   switch (action.type) {
@@ -80,5 +80,8 @@ export default function players (state = initialState, action) {
 
 export const getPlayerNames = createSelector(
   state=>state.players,
-  players => Object.keys(players).map((a)=>players[a].name)
+  players => Object.keys(players)
+                    .map((e)=>typeof players[e] === 'object'? players[e]:null)
+                    .filter((e)=>e)
+                    .map((e)=>e.name)
 )

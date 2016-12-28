@@ -16,8 +16,8 @@ mv index.html ../dist/controller.html
 cp favicon.ico ../dist/
 
 cp -r static/css/* ../dist/static/css
-cp -r static/js/* ../../dist/static/js
-cp -r static/media/* ../../dist/static/media
+cp -r static/js/* ../dist/static/js
+cp -r static/media/* ../dist/static/media
 
 cd ..
 

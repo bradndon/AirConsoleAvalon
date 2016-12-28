@@ -44,7 +44,7 @@ class MenuContainer extends React.Component {
 
 MenuContainer.propTypes = {
   hasJoined: PropTypes.bool.isRequired,
-  JoinGame: PropTypes.func.isRequired
+  joinGame: PropTypes.func.isRequired
 }
 
 function mapStateToProps ({players}) {
