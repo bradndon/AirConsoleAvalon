@@ -51,12 +51,7 @@ function vote(state = initialVoteState, action) {
   }
 }
 
-const initialState = [{
-  players: {},
-  quest: {},
-  playerLimit: 4,
-}
-]
+const initialState = []
 
 export default function votes (state = initialState, action) {
   switch (action.type) {
