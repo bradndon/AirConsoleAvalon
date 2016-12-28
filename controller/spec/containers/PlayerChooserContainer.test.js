@@ -2,11 +2,12 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { PlayerChooserContainer, mapStateToProps } from 'controller/containers/PlayerChooser/PlayerChooserContainer'
 
-function setup (players, vote, playerCount) {
+function setup (players, vote, playerCount, playerLimit) {
   const props = {
     players,
     vote,
-    playerCount
+    playerCount,
+    playerLimit,
   }
   const context = { router: { isActive: (a, b) => true } };
   const enzymeWrapper = shallow(<PlayerChooserContainer {...props}/>, {context})
@@ -25,15 +26,14 @@ describe("Containers", ()=> {
           players: {},
           quest: {},
           playerLimit: 4,
-        }, 2)
+        }, 2, 2)
       expect(enzymeWrapper.find('LeaderQuestInfo').exists()).toBe(true)
     })
     it("should send the right props to the LeaderQuestInfo component", ()=> {
       const { enzymeWrapper} = setup([{name: "Brandon", deviceId: 1}, {name: "Isaac", deviceId: 2}], {
         players: {},
         quest: {},
-        playerLimit: 4,
-      }, 1)
+      }, 1, 4 )
       expect(enzymeWrapper.find('LeaderQuestInfo').props().numLeft).toBe(3)
       expect(enzymeWrapper.find('LeaderQuestInfo').props().isReady).toBe(true)
     })
@@ -42,7 +42,7 @@ describe("Containers", ()=> {
         players: {},
         quest: {},
         playerLimit: 4,
-      }, 1)
+      }, 1, 2)
       expect(enzymeWrapper.find('PlayerCard').length).toBe(2)
     })
     describe("mapStateToProps", ()=> {
@@ -58,11 +58,10 @@ describe("Containers", ()=> {
             votes: [
               {
                 players: {1: true},
-                quest: {},
-                playerLimit: 0
+                quest: 1,
               }
             ],
-            quests: {},
+            quests: {1: {playerCount: 0}},
             game: {
               currentQuest: 1
             }
@@ -71,9 +70,9 @@ describe("Containers", ()=> {
               players: [{deviceId: 1, name: 'Brandon', role: ''}],
               vote: {
                 players: {1:true},
-                quest: {},
-                playerLimit: 0
+                quest: 1,
               },
+              playerLimit: 0,
               playerCount: 1
             })
       })
