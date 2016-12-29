@@ -20,7 +20,7 @@ const Overlay = styled.div`
 
 class ResultsContainer extends React.Component {
   render() {
-    const result = hasSucceeded ? "Success!" : "Failure"
+    const result = this.props.hasSucceeded ? "Success!" : "Failure"
     return (
       <Overlay>
         <h2>{result}</h2>

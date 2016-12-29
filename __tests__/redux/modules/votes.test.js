@@ -11,6 +11,7 @@ describe("Voting", () => {
         type: types.ADD_VOTE,
         quest,
         leader,
+        route: '/players',
       }
       expect(actions.addVote(quest, leader)).toEqual(expectedAction)
     })

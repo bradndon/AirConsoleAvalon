@@ -6,6 +6,7 @@ export function addVote (quest, leader) {
     type: ADD_VOTE,
     quest,
     leader,
+    route: '/players',
   }
 }
 
