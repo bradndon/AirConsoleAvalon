@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router, hashHistory, IndexRoute, Route } from 'react-router'
-import { MainContainer, MenuContainer, ChosenContainer, VoteContainer } from 'screen/containers'
+import { MainContainer, MenuContainer, ChosenContainer, VoteContainer, ResultsContainer } from 'screen/containers'
 import { syncHistoryWithStore } from 'react-router-redux'
 import store from 'redux/store'
 
@@ -12,6 +12,7 @@ const routes = (
       <IndexRoute component={MenuContainer}/>
       <Route path='/players' component={ChosenContainer}/>
       <Route path='/vote' component={VoteContainer}/>
+      <Route path='/results' component={ResultsContainer}/>
     </Router>
   </Router>
 )

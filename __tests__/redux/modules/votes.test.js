@@ -349,6 +349,36 @@ describe("Voting", () => {
         })).toEqual(0)
       })
     })
+    describe('hasSucceeded', ()=> {
+      it('should succeed if more than half the votes are yes', ()=>{
+        expect(actions.hasSucceeded({
+          votes:[
+            {
+              votes: {
+                1: true,
+                2: true,
+                3: true,
+                5: false,
+              },
+            },
+          ],
+        })).toEqual(true)
+      })
+      it('should fail half the votes are yes', ()=>{
+        expect(actions.hasSucceeded({
+          votes:[
+            {
+              votes: {
+                1: true,
+                2: false,
+                3: true,
+                5: false,
+              },
+            },
+          ],
+        })).toEqual(false)
+      })
+    })
     describe('atLimit', () => {
       it('should return false if below limit', () => {
         expect(actions.atLimit({

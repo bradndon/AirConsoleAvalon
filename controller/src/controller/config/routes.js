@@ -13,6 +13,7 @@ const routes = (
       <IndexRoute component={MenuContainer}/>
       <Route path='/players' component={PlayerChooserContainer}/>
       <Route path='/vote' component={VoteContainer}/>
+      <Route path='/results' component={MenuContainer}/>
     </Router>
   </Router>
 )

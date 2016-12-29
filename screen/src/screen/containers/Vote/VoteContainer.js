@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import * as voteActionCreators from 'redux/modules/votes'
 import { getPlayers } from 'redux/modules/players'
+import airconsole from 'screen/constants/airconsole'
+import { push } from 'react-router-redux'
 
 const Overlay = styled.div`
   background-color: rgba(0,0,50,0.6);
@@ -22,7 +24,8 @@ const Overlay = styled.div`
 class VoteContainer extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.players.length - nextProps.voteCount === 0) {
-      console.warn("VOTING IS COMPLETE, TIME TO CALCULATE RESULT")
+      airconsole.broadcast(push('/results'))
+      this.props.goToResults()
     }
   }
   render() {
@@ -33,13 +36,23 @@ class VoteContainer extends React.Component {
 VoteContainer.propTypes = {
   voteCount: PropTypes.number.isRequired,
   players: PropTypes.array.isRequired,
+  currentVote: PropTypes.object.isRequired,
 }
 
 function mapStateToProps(state, props) {
   return {
     voteCount: voteActionCreators.voteCount(state, props),
     players: getPlayers(state, props),
+    vote: voteActionCreators.currentVote(state, props),
   }
 }
 
-export default connect(mapStateToProps)(VoteContainer)
+function mapDispatchToProps(dispatch) {
+  return {
+    goToResults: ()=> {
+      dispatch(push('results'))
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VoteContainer)

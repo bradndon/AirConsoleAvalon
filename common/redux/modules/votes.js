@@ -129,6 +129,12 @@ export const voteCount = createSelector(
   vote => Object.keys(vote.votes).length,
 )
 
+export const hasSucceeded = createSelector(
+  currentVote,
+  voteCount,
+  (vote, count) => Object.keys(vote.votes).reduce((a,b)=> vote.votes[b] === true ? a+1 : a, 0) > Math.floor(count/2)
+)
+
 export const atLimit = createSelector(
   getPlayerCount,
   currentLimit,
