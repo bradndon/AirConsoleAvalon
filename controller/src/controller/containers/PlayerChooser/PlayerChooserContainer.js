@@ -12,7 +12,7 @@ export class PlayerChooserContainer extends React.Component {
   }
   handleTap(index, e) {
     e.stopPropagation()
-    if (this.props.playerLimit - this.props.playerCount !== 0) {
+    if (this.props.playerLimit - this.props.playerCount !== 0 || this.props.vote.players[this.props.players[index].deviceId] === true) {
       airconsole.message(0, voteActionCreators.votePlayer(this.props.players[index].deviceId))
       this.props.votePlayer(this.props.players[index].deviceId)
     }
