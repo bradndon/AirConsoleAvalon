@@ -78,10 +78,14 @@ export default function players (state = initialState, action) {
   }
 }
 
-export const getPlayerNames = createSelector(
+export const getPlayers = createSelector(
   state=>state.players,
   players => Object.keys(players)
                     .map((e)=>typeof players[e] === 'object'? players[e]:null)
                     .filter((e)=>e)
-                    .map((e)=>e.name)
+)
+
+export const getPlayerNames = createSelector(
+  getPlayers,
+  players => players.map((e)=>e.name)
 )

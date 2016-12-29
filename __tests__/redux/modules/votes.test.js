@@ -78,6 +78,21 @@ describe("Voting", () => {
         },
       ])
     })
+    it('should start the game', () => {
+      expect(
+        reducer([], {
+          type: types.START_GAME,
+          deviceId: 1,
+        })
+      ).toEqual([
+        {
+          quest: 1,
+          players: {},
+          leader: 1,
+          votes: {},
+        },
+      ])
+    })
     it('should vote for a new player', () => {
       expect(
         reducer([
@@ -307,6 +322,31 @@ describe("Voting", () => {
             6: {6: 6},
           },
         })).toEqual([{5: 5}, {6: 6}])
+      })
+    })
+    describe('voteCount', ()=> {
+      it('should return the number of votes in', ()=>{
+        expect(actions.voteCount({
+          votes:[
+            {
+              votes: {
+                1: true,
+                2: true,
+                3: true,
+                5: false,
+              },
+            },
+          ],
+        })).toEqual(4)
+      })
+      it('should return 0 if no votes', ()=>{
+        expect(actions.voteCount({
+          votes:[
+            {
+              votes: {},
+            },
+          ],
+        })).toEqual(0)
       })
     })
     describe('atLimit', () => {

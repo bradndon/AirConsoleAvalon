@@ -27,7 +27,7 @@ export function setVote(deviceId, isApproving) {
   return {
     type: VOTE_SET_VOTE,
     deviceId,
-    isApproving
+    isApproving,
   }
 }
 
@@ -81,6 +81,7 @@ export default function votes (state = initialState, action) {
           players: {},
           quest: 1,
           leader: action.deviceId,
+          votes: {},
         },
       ]
     case VOTE_PLAYER:
@@ -121,6 +122,11 @@ export const getPlayersOffQuest = createSelector(
   currentVote,
   state => state.players,
   (vote, players) => Object.keys(players).filter((e)=>typeof players[e] === 'object').filter((a)=> vote.players[a] !== true).map(e=>players[e])
+)
+
+export const voteCount = createSelector(
+  currentVote,
+  vote => Object.keys(vote.votes).length,
 )
 
 export const atLimit = createSelector(

@@ -9,6 +9,7 @@ class VoteContainer extends React.Component {
     super()
     this.state = {
       isApproving: false,
+      hasVoted: false,
     }
   }
   approve() {
@@ -18,16 +19,18 @@ class VoteContainer extends React.Component {
     this.setState({isApproving: false})
   }
   submitVote() {
+    this.setState({hasVoted: true})
     airconsole.message(0, voteActionCreators.setVote(airconsole.getDeviceId(), this.state.isApproving))
   }
   render () {
-    return (
+    return (this.state.hasVoted ? (<h2>{'Thanks for voting! Waiting for others'}</h2>) : (
       <Vote
         names={this.props.players.map((e)=>e.name)}
         isApproving={this.state.isApproving}
         approve={()=>this.approve()}
         reject={()=>this.reject()}
         submitVote={()=>this.submitVote()}/>
+      )
     )
   }
 }

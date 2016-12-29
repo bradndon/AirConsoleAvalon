@@ -1,15 +1,17 @@
 import React from 'react'
 import { Router, hashHistory, IndexRoute, Route } from 'react-router'
-import { MainContainer, MenuContainer, ChosenContainer } from 'screen/containers'
+import { MainContainer, MenuContainer, ChosenContainer, VoteContainer } from 'screen/containers'
+import { syncHistoryWithStore } from 'react-router-redux'
+import store from 'redux/store'
 
-
+const history = syncHistoryWithStore(hashHistory, store)
 
 const routes = (
-  <Router history={hashHistory}>
+  <Router history={history}>
     <Router path='/' component={MainContainer}>
       <IndexRoute component={MenuContainer}/>
       <Route path='/players' component={ChosenContainer}/>
-      <Route path='/vote' component={MenuContainer}/>
+      <Route path='/vote' component={VoteContainer}/>
     </Router>
   </Router>
 )
