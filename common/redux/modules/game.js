@@ -12,7 +12,7 @@ export function startGame(deviceId, playerCount) {
     type: START_GAME,
     deviceId,
     playerCount,
-    route: '/players',
+    route: '/role',
   }
 }
 

@@ -19,7 +19,7 @@ describe("Game", ()=> {
         type: types.START_GAME,
         deviceId,
         playerCount,
-        route: '/players',
+        route: '/role',
       }
       expect(actions.startGame(deviceId, playerCount)).toEqual(expectedAction)
     })
