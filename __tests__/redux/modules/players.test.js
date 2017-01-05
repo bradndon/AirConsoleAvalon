@@ -77,31 +77,6 @@ describe('Players', ()=> {
         },
       })
     })
-    it('should add a role to a player', ()=> {
-      expect(
-        reducer({
-          0: {
-            role: '',
-            name: "Brandon",
-            deviceId: 0,
-
-          },
-        },
-        {
-          type: types.ADD_ROLE,
-          role: "Good Guy",
-          deviceId: 0,
-        })
-      ).toEqual(
-        {
-          0: {
-            role: 'Good Guy',
-            name: "Brandon",
-            deviceId: 0,
-          },
-        }
-      )
-    })
     it('should let the player join the game', ()=> {
       expect(
         reducer({},{
@@ -112,6 +87,25 @@ describe('Players', ()=> {
           hasJoined:true,
           deviceId: 1,
       })
+    })
+    it('should assign roles when the game starts',() => {
+      let result = reducer({0: {
+          name: "Brandon",
+        },
+        1: {
+          name: "Isaac",
+        },
+        2: {
+          name: "Jacob",
+        },
+        3: {
+          name: "Dana",
+        },
+        4: {
+          name: "Kenzie",
+        },
+      }, {type: types.START_GAME, playerCount: 5})
+      expect(Object.keys(result).filter((a)=>result[a].role !== undefined).length).toBe(5)
     })
     it("should set the state to the passed in values", ()=> {
       expect(reducer({}, {type: types.SET_STATE, state: {

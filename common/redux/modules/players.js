@@ -1,5 +1,7 @@
-import { ADD_PLAYER, ADD_ROLE, JOIN_GAME, SET_STATE } from 'constants/ActionTypes'
+import { ADD_PLAYER, ADD_ROLE, JOIN_GAME, SET_STATE, START_GAME } from 'constants/ActionTypes'
 import { createSelector } from 'reselect'
+import roleConfig from 'constants/roleConfig'
+import shuffle from 'utils/shuffle'
 
 const initialPlayerState = {
   deviceId: '',
@@ -48,6 +50,16 @@ function player ( state=initialPlayerState, action) {
   }
 }
 
+function assignRoles(state, playerCount) {
+  let roles = shuffle(roleConfig[playerCount])
+  let deviceIds = Object.keys(state).map((e)=>typeof state[e] === 'object'? e:null).filter((e)=>e)
+  let newPlayers = {}
+  for (var i = 0; i < deviceIds.length; i++) {
+    newPlayers[deviceIds[i]] = player(state[deviceIds[i]], {type: ADD_ROLE, role: roles[i]})
+  }
+  return newPlayers
+}
+
 const initialState = {}
 
 export default function players (state = initialState, action) {
@@ -57,11 +69,12 @@ export default function players (state = initialState, action) {
         ...state,
         [action.deviceId]: player(state[action.deviceId], action),
       }
-    case ADD_ROLE:
+    case START_GAME:
       return {
         ...state,
-        [action.deviceId]: player(state[action.deviceId], action),
+        ...assignRoles(state, action.playerCount),
       }
+
     case JOIN_GAME:
       return {
         ...state,
